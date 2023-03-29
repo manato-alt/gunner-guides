@@ -81,4 +81,3 @@
 https://www.figma.com/file/EAI0phFo4p06eqZp6nvlH3/%E7%84%A1%E9%A1%8C?node-id=0%3A1&t=Us6MeFBAa2ovYIls-1
 
 ■ ER図
-https://drive.google.com/file/d/1yrhWSwf-ejn8FKC4f8tCOgWc9jz4bleU/view?usp=sharing
