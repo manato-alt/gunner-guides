@@ -69,3 +69,6 @@ gem "tailwindcss-rails", "~> 2.0"
 gem 'sorcery'
 gem 'pry-byebug'
 gem 'rails-i18n'
+gem 'twitch-api'
+gem 'giantbomb-api'
+gem 'dotenv-rails'
