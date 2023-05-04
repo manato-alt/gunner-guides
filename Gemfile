@@ -72,3 +72,6 @@ gem 'rails-i18n'
 gem 'twitch-api'
 gem 'giantbomb-api'
 gem 'dotenv-rails'
+gem 'whenever', require: false
+gem 'httparty'
+gem 'bundler', '~> 2.4.12'
