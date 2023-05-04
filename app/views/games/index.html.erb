@@ -1,0 +1,17 @@
+<div class="bg-[#161617] py-20">
+  <div class="text-center">
+    <h2 class="font-bold text-2xl text-white md:text-3xl lg:text-4xl mb-6 ">ゲーム一覧</h2>
+    <p class="my-5 text-[#cecece]">学びたいゲームを選んでください<br>＊日本で人気のシューティングゲームのみ対応しています</p>
+  </div>
+  <div class="px-10 grid grid-cols-3 gap-4">
+    <% @games.each do |game| %>
+      <div class="bg-white flex items-center mb-4 border rounded-lg p-4">
+        <%= image_tag game.logo_url, class: "h-24 w-24 object-contain mr-4" %>
+        <div>
+          <%= content_tag :div, game.title, class: "font-bold mb-2" %>
+          <%= content_tag :div, truncate(game.description, length: 100), class: "text-sm" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
