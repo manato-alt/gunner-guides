@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get 'setting', to: 'purposes#setting'
       get 'training', to: 'purposes#training'
       get 'information', to: 'purposes#information'
+      resources :purposes, only: [:show]
     end
   end
 end
