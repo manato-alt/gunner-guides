@@ -1,0 +1,31 @@
+<div class="bg-[#161617]">
+  <div class="w-4/5 mx-auto  border rounded-lg p-4">
+    <div class="bg-white flex items-center mb-4">
+      <%= image_tag @game.logo_url, class: "h-24 w-24 object-contain mr-4" %>
+      <div>
+        <%= content_tag :div, @game.title, class: "font-bold mb-2" %>
+        <%= content_tag :div, @game.description, class: "text-sm" %>
+      </div>
+    </div>
+    <div class="bg-white flex items-center mb-4 border rounded-lg p-4 h-36 ">
+      <%= image_tag src="https://placehold.jp/150x100.png", class: "object-contain mr-4" %>
+      <div>
+        <h4 class="text-3xl mb-2">
+          <span class="text-amber-500">1.</span>
+          <span>設定を変更する</span>
+        </h4>
+        <p class="text-neutral-500">「グラフィック設定」や「ボタン配置設置」を始めとして、初期設定をしっかりやるのとデフォルトで適当にやるのではゲームの上達速度が全く違ってきます。時間経過と共に変更する敷居が高くなるので最初にやることをお勧めします</p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <% @videos.each do |video| %>
+      <div>
+        <%= link_to  purpose_path(@game.title, video) do %>
+          <%= image_tag video.thumbnail_url %>
+          <p><%= video.title %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
