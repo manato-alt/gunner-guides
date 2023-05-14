@@ -1,0 +1,31 @@
+<div class="bg-[#161617]">
+  <div class="w-4/5 mx-auto  border rounded-lg p-4">
+    <div class="bg-white flex items-center mb-4">
+      <%= image_tag @game.logo_url, class: "h-24 w-24 object-contain mr-4" %>
+      <div>
+        <%= content_tag :div, @game.title, class: "font-bold mb-2" %>
+        <%= content_tag :div, @game.description, class: "text-sm" %>
+      </div>
+    </div>
+    <div class="bg-white flex items-center mb-4 border rounded-lg p-4 h-36 ">
+      <%= image_tag src="https://placehold.jp/150x100.png", class: "object-contain mr-4" %>
+      <div>
+        <h4 class="text-3xl mb-2">
+          <span class="text-amber-500">2.</span>
+          <span>練習方法を見つける</span>
+        </h4>
+        <p class="text-neutral-500">練習に関するコンテンツをピックアップ。自分にあった練習方法を見つけ、日々積み重ねることで効率よく上達しましょう</p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <% @videos.each do |video| %>
+      <div>
+        <%= link_to  purpose_path(@game.title, video) do %>
+          <%= image_tag video.thumbnail_url %>
+          <p><%= video.title %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

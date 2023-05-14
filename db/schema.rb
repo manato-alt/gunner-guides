@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_05_034052) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_14_002317) do
   create_table "categories", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -26,6 +26,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_034052) do
     t.index ["title"], name: "index_games_on_title", unique: true
   end
 
+  create_table "keywords", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_keywords_on_category_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -35,4 +43,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_034052) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "videos", charset: "utf8mb4", force: :cascade do |t|
+    t.string "title"
+    t.string "thumbnail_url"
+    t.string "embed_code"
+    t.bigint "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "category_id", null: false
+    t.string "video_id"
+    t.index ["category_id"], name: "index_videos_on_category_id"
+    t.index ["game_id"], name: "index_videos_on_game_id"
+  end
+
+  add_foreign_key "keywords", "categories"
+  add_foreign_key "videos", "categories"
+  add_foreign_key "videos", "games"
 end

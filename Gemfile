@@ -75,3 +75,5 @@ gem 'dotenv-rails'
 gem 'whenever', require: false
 gem 'httparty'
 gem 'bundler', '~> 2.4.12'
+gem 'google-api-client'
+gem 'google-apis-youtube_v3'
