@@ -13,4 +13,5 @@ Rails.application.routes.draw do
       resources :purposes, only: [:show]
     end
   end
+  resources :uservideos, only: [:update]
 end
