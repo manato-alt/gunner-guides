@@ -1,0 +1,9 @@
+<turbo-frame id="complete-button">
+  <% if current_user %>
+    <% if @uservideo.watched_status == 1 %>
+      <%= button_to '完了', uservideo_path(@uservideo), method: :put, remote: true, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded", data: { turbo_frame: "uservideo_frame" } %>
+    <% elsif @uservideo.watched_status == 2 %>
+      <%= button_to '完了済み', uservideo_path(@uservideo), method: :put, remote: true, class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded", data: { turbo_frame: "uservideo_frame" } %>
+    <% end %>
+  <% end %>
+</turbo-frame>

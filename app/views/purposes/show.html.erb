@@ -1,3 +1,6 @@
 <h2><%= @video.title %></h2>
 
 <%= @video.embed_code.html_safe %>
+
+
+<%= render 'shared/watched_status', uservideo: @uservideo %>
