@@ -11,4 +11,19 @@ class UservideosController < ApplicationController
       partial: 'shared/watched_status',
     )
   end
+
+  def home
+    @uservideo = Uservideo.find(params[:id])
+    render turbo_stream: turbo_stream.update(
+      'section',
+      partial: 'shared/watched_status',
+    )
+  end
+
+  def memo
+    render turbo_stream: turbo_stream.update(
+      'section',
+      partial: 'shared/memo',
+    )
+  end
 end
