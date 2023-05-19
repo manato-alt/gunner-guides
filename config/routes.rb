@@ -14,4 +14,7 @@ Rails.application.routes.draw do
     end
   end
   resources :uservideos, only: [:update]
+  get 'home/:id', to: 'uservideos#home', as: 'home'
+  get 'memo', to: 'uservideos#memo'
+
 end
