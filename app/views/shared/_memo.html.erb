@@ -1,1 +1,22 @@
-aaa
+<%= form_with(model: @memo, url: memos_path, method: :post, local: false) do |form| %>
+  <% if @memo.errors.any? %>
+  <ul>
+    <% @memo.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  <%= form.text_area :content, value: @memo.content %>
+  <%= form.hidden_field :user_id, value: @uservideo.user_id %>
+  <%= form.hidden_field :video_id, value: @uservideo.video_id %>
+  <%= form.submit 'Create Memo' %>
+<% end %>
+
+<h1>Memo List</h1>
+<ul>
+  <% @memos.each do |memo| %>
+    <turbo-frame id="memo_update_<%= memo.id %>">
+      <%= render 'shared/memo_index', memo: memo %>
+    </turbo-frame>
+  <% end %>
+</ul>
