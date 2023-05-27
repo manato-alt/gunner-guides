@@ -1,5 +1,6 @@
 class UservideosController < ApplicationController
   def update
+    @memo = Memo.new
     @uservideo = Uservideo.find(params[:id])
     if @uservideo.watched_status == 1
       @uservideo.update(practiced_at: Time.now, watched_status: 2)
@@ -17,13 +18,6 @@ class UservideosController < ApplicationController
     render turbo_stream: turbo_stream.update(
       'section',
       partial: 'shared/watched_status',
-    )
-  end
-
-  def memo
-    render turbo_stream: turbo_stream.update(
-      'section',
-      partial: 'shared/memo',
     )
   end
 end
