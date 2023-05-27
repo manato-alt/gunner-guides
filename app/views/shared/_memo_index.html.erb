@@ -1,0 +1,7 @@
+<li>
+  <%= memo.content %>
+  <%= link_to 'Edit', edit_memo_path(memo) %>
+  <%= link_to 'Delete', memo_path(memo), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%>
+  <turbo-frame id="memo_edit_<%= memo.id %>">
+  </turbo-frame>
+</li>
