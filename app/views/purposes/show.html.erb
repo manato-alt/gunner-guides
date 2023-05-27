@@ -2,5 +2,10 @@
 
 <%= @video.embed_code.html_safe %>
 
-
-<%= render 'shared/watched_status', uservideo: @uservideo %>
+<div>
+  <%= link_to 'ホーム', home_path(@uservideo), remote: true, class: 'text-blue-500 hover:underline' %>
+  <%= link_to 'メモ', memo_section_path(@uservideo), remote: true, class: 'text-blue-500 hover:underline'  %>
+</div>
+<turbo-frame id="section">
+  <%= render 'shared/watched_status' %>
+</turbo-frame>

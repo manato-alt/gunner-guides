@@ -16,6 +16,7 @@ class PurposesController < ApplicationController
   end
 
   def show
+    @memo = Memo.new
     @game = Game.find_by!(title: params[:title])
     @video = Video.find(params[:id])
     if current_user

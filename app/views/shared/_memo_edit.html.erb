@@ -1,0 +1,12 @@
+<%= form_with(model: @memo, url: memo_path(@memo), method: :patch) do |form| %>
+  <% if @memo.errors.any? %>
+  <ul>
+    <% @memo.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  <%= form.text_area :content %>
+  <%= form.submit 'Update Memo' %>
+  <%= form.submit 'キャンセル' %>
+<% end %>
