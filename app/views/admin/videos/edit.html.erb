@@ -1,0 +1,21 @@
+<div>
+  <%= form_with(model: @video, url: admin_video_path(@video), local: true) do |form| %>
+    <% if @video.errors.any? %>
+      <ul>
+        <% @video.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div>
+      <p>サムネイル</p>
+      <%= image_tag @video.thumbnail_url, class: "h-24 w-24 object-contain mr-4" %>
+      <%= form.text_field :thumbnail_url %>
+    </div>
+    <div>
+      <p>動画タイトル</p>
+      <%= form.text_field :title, class: "font-bold mb-2" %>
+    </div>
+    <%= form.submit "更新" %>
+  <% end %>
+</div>
