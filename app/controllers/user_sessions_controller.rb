@@ -1,4 +1,6 @@
 class UserSessionsController < ApplicationController
+  before_action :block_login_page_access, only: %i[new create]
+
   def new
     @user = User.new
   end
