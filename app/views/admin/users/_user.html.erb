@@ -1,0 +1,10 @@
+<%= turbo_frame_tag user do %>
+  <div class="flex items-center">
+    <div class="mr-4"><%= user.email %></div>
+    <div class="mr-4"><%= user.role %></div>
+    <div class="ml-auto">
+      <%= link_to '詳細', admin_user_path(user), data: { turbo: "false" } %> |
+      <%= link_to '削除', admin_user_path(user), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%>
+    </div>
+  </div>
+<% end %>

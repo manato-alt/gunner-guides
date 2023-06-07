@@ -1,0 +1,21 @@
+<div>
+  <%= form_tag admin_root_path, method: :get, class: "mb-4" do %>
+    <%= label_tag :email, "Emailで検索" %>
+    <%= text_field_tag :email, params[:email] %>
+
+    <%= label_tag :role, "Roleで絞り込み" %>
+    <%= select_tag :role, options_for_select(User.roles.keys, params[:role]), prompt: "すべて" %>
+
+    <%= submit_tag "検索" %>
+  <% end %>
+</div>
+<div>
+  <div class="grid grid-cols-3">
+    <div>Email</div>
+    <div>Role</div>
+    <div>Actions</div>
+  </div>
+  <%= render @users %>
+  <%= paginate @users %>
+</div>
+
