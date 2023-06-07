@@ -1,0 +1,25 @@
+<div>
+  <%= form_with(model: @game, url: admin_game_path(@game), local: true) do |form| %>
+    <% if @game.errors.any? %>
+      <ul>
+        <% @game.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div>
+      <p>ゲームロゴ</p>
+      <%= image_tag @game.logo_url, class: "h-24 w-24 object-contain mr-4" %>
+      <%= form.text_field :logo_url %>
+    </div>
+    <div>
+      <p>ゲームタイトル</p>
+      <%= form.text_field :title, class: "font-bold mb-2" %>
+    </div>
+    <div>
+      <p>ゲーム概要</p>
+      <%= form.text_area :description, class: "text-sm" %>
+    </div>
+    <%= form.submit "更新" %>
+  <% end %>
+</div>
