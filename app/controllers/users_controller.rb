@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :block_login_page_access
   def new
     @user = User.new
   end
@@ -11,10 +12,11 @@ class UsersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+  end
 end
 
-private
-
-def user_params
-  params.require(:user).permit(:email, :password, :password_confirmation)
-end

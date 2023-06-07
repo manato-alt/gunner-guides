@@ -1,0 +1,20 @@
+<div>
+  <%= form_tag admin_videos_path, method: :get, class: "mb-4" do %>
+    <%= label_tag :title, "タイトルで検索" %>
+    <%= text_field_tag :title, params[:title] %>
+
+    <%= label_tag :game_id, "ゲームで絞り込み" %>
+    <%= select_tag :game_id, options_from_collection_for_select(Game.all, :id, :title, params[:game_id]), prompt: "すべてのゲーム" %>
+
+    <%= label_tag :category_id, "カテゴリで絞り込み" %>
+    <%= select_tag :category_id, options_from_collection_for_select(Category.all, :id, :name, params[:category_id]), prompt: "すべてのカテゴリ" %>
+
+    <%= submit_tag "検索" %>
+  <% end %>
+  <div class="grid grid-cols-3">
+    <div>サムネ</div>
+    <div>タイトル</div>
+  </div>
+  <%= render @videos %>
+  <%= paginate @videos %>
+</div>

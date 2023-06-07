@@ -1,0 +1,23 @@
+<div>
+  <div>
+    <h1 class="text-center">動画詳細</h1>
+  </div>
+  <div>
+    <div>
+      <p>サムネイル</p>
+      <%= image_tag @video.thumbnail_url, class: "h-24 w-24 object-contain mr-4" %>
+    </div>
+    <div>
+      <p>動画ID</p>
+      <%= content_tag :div, @video.id, class: "text-sm" %>
+    </div>
+    <div>
+      <p>動画埋め込みコード</p>
+      <%= content_tag :div, @video.embed_code, class: "font-bold mb-2" %>
+    </div>
+    <div>
+      <p>動画情報作成日時</p>
+      <%= content_tag :div, @video.created_at, class: "text-sm" %>
+    </div>
+  </div>
+</div>

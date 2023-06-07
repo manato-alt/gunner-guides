@@ -1,0 +1,14 @@
+<div>
+  <%= form_tag admin_games_path, method: :get, class: "mb-4" do %>
+    <%= label_tag :title, "タイトルで検索" %>
+    <%= text_field_tag :title, params[:title] %>
+    <%= submit_tag "検索" %>
+  <% end %>
+  <div class="grid grid-cols-3">
+    <div>logo</div>
+    <div>title</div>
+    <div>Actions</div>
+  </div>
+  <%= render @games %>
+  <%= paginate @games %>
+</div>

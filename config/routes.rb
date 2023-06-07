@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    root to: 'users#index'
+    resources :users, only: %i[show destroy]
+    resources :games, only: %i[index show edit update destroy]
+    resources :videos, only: %i[index show edit update destroy]
+    get 'login', to: 'user_sessions#new'
+    post 'login', to: 'user_sessions#create'
+    delete 'logout', to: 'user_sessions#destroy'
+  end
   get 'games/index'
   root 'tops#index'
   get 'login', to: 'user_sessions#new'
