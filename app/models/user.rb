@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   enum role: { general: 0, admin: 1 }
+  has_many :user_videos
+  has_many :videos, through: :user_videos
 end

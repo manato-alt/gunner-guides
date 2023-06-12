@@ -1,0 +1,22 @@
+<div class="mx-4">
+  <%= form_tag watch_path, method: :get, class: "mb-4" do %>
+    <%= select_tag :game_id, options_for_select(Game.pluck(:title, :id), session[:selected_game_id]), prompt: 'Select Game' %>
+    <%= select_tag :category_id, options_for_select(Category.pluck(:name, :id), session[:selected_category_id]), prompt: 'Select Category' %>
+    <%= select_tag :sort, options_for_select({ "Newest First" => "newest", "Oldest First" => "oldest" }, session[:selected_sort]), prompt: 'Sort By' %>
+    <%= submit_tag 'Filter' %>
+  <% end %>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <% @videos.each do |video| %>
+      <div class="bg-white rounded-lg shadow-md p-2">
+        <%= link_to  purpose_path(video.game.title, video), data: { turbo: "false" } do %>
+          <img class="rounded-t-lg" src="<%= video.thumbnail_url %>" alt="Thumbnail">
+          <div class="p-4">
+            <h3 class="text-base sm:text-lg font-semibold mb-2 truncate"><%= video.title %></h3>
+            <!-- 他の情報やボタンなどを追加することもできます -->
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @videos %>
+</div>

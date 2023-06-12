@@ -38,30 +38,50 @@ class MemosController < ApplicationController
 
   def update
     @memo = Memo.find(params[:id])
-    if params[:commit] == 'キャンセル'
-      # キャンセルボタンが押された場合の処理
-      render turbo_stream: turbo_stream.update(
-        "memo_update_#{params[:id]}", # memo_update_ をプレフィックスにした ID を指定する
-        partial: 'shared/memo_index',
-        locals: { memo: @memo }
-      )
-    elsif @memo.update(memo_params)
-      @uservideo = Uservideo.find_by(user_id: @memo.user_id, video_id: @memo.video_id)
-      @memos = Memo.where(user_id: @memo.user_id, video_id: @memo.video_id)
-      render turbo_stream: turbo_stream.update(
-        "memo_update_#{params[:id]}", # memo_update_ をプレフィックスにした ID を指定する
-        partial: 'shared/memo_index',
-        locals: { memo: @memo }
-      )
+    if request.referer.include?('mypage')
+      if params[:commit] == 'キャンセル'
+        render turbo_stream: turbo_stream.update("memo_edit_#{params[:id]}") do |page|
+          page.html("")
+        end
+      elsif @memo.update(memo_params)
+        render turbo_stream: turbo_stream.update(
+          "memo_update_#{params[:id]}", # memo_update_ をプレフィックスにした ID を指定する
+          partial: 'shared/mypage_memo_index',
+          locals: { memo: @memo }
+        )
+      else
+        render turbo_stream: turbo_stream.update(
+          "section", # memo_update_ をプレフィックスにした ID を指定する
+          partial: 'shared/mypage_memo_index',
+          locals: { memo: @memo }
+        )
+      end
     else
-      @uservideo = Uservideo.find_by(user_id: @memo.user_id, video_id: @memo.video_id)
-      @memos = Memo.where(user_id: @memo.user_id, video_id: @memo.video_id)
+      if params[:commit] == 'キャンセル'
+        # キャンセルボタンが押された場合の処理
+        render turbo_stream: turbo_stream.update(
+          "memo_update_#{params[:id]}", # memo_update_ をプレフィックスにした ID を指定する
+          partial: 'shared/memo_index',
+          locals: { memo: @memo }
+        )
+      elsif @memo.update(memo_params)
+        @uservideo = Uservideo.find_by(user_id: @memo.user_id, video_id: @memo.video_id)
+        @memos = Memo.where(user_id: @memo.user_id, video_id: @memo.video_id)
+        render turbo_stream: turbo_stream.update(
+          "memo_update_#{params[:id]}", # memo_update_ をプレフィックスにした ID を指定する
+          partial: 'shared/memo_index',
+          locals: { memo: @memo }
+        )
+      else
+        @uservideo = Uservideo.find_by(user_id: @memo.user_id, video_id: @memo.video_id)
+        @memos = Memo.where(user_id: @memo.user_id, video_id: @memo.video_id)
 
-      render turbo_stream: turbo_stream.update(
-        "memo_edit_#{params[:id]}", # memo_edit_ をプレフィックスにした ID を指定する
-        partial: 'shared/memo_edit',
-        locals: { memo: @memo }
-      )
+        render turbo_stream: turbo_stream.update(
+          "memo_edit_#{params[:id]}", # memo_edit_ をプレフィックスにした ID を指定する
+          partial: 'shared/memo_edit',
+          locals: { memo: @memo }
+        )
+      end
     end
   end
 
