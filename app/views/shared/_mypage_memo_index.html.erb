@@ -1,0 +1,11 @@
+<div class="memo-item">
+  <%= link_to  purpose_path(memo.video.game.title, memo.video), data: { turbo: "false" } do %>
+    <h3><%= memo.video.title %></h3>
+  <% end %>
+  <p><%= memo.content %></p>
+  <%= link_to 'Edit', edit_memo_path(memo) %>
+  <%= link_to 'Delete', memo_path(memo), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%>
+  <turbo-frame id="memo_edit_<%= memo.id %>">
+  </turbo-frame>  
+  <!-- 他のメモの情報や操作ボタンなどを追加 -->
+</div>
