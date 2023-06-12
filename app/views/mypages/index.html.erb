@@ -1,0 +1,9 @@
+<h1>マイページ</h1>
+<div>
+  <%= link_to '視聴済み', watch_path, remote: true, class: 'text-blue-500 hover:underline' %>
+  <%= link_to '実践済み', complete_path, remote: true, class: 'text-blue-500 hover:underline'  %>
+  <%= link_to 'メモ', mypage_memo_path, remote: true, class: 'text-blue-500 hover:underline'  %>
+</div>
+<turbo-frame id="section">
+  <%= render 'shared/mypage_watched' %>
+</turbo-frame>
