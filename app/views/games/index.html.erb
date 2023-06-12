@@ -3,6 +3,13 @@
     <h2 class="font-bold text-2xl text-white md:text-3xl lg:text-4xl mb-6 ">ゲーム一覧</h2>
     <p class="my-5 text-[#cecece]">学びたいゲームを選んでください<br>＊日本で人気のシューティングゲームのみ対応しています</p>
   </div>
+  <div class="text-blue-50">
+    <%= form_tag games_path, method: :get, class: "mb-4" do %>
+      <%= label_tag :title, "タイトルで検索" %>
+      <%= text_field_tag :title, params[:title] %>
+      <%= submit_tag "検索" %>
+    <% end %>
+  </div>
   <div class="px-10 grid grid-cols-3 gap-4">
     <% @games.each do |game| %>
       <%= link_to(game_path(game.title)) do %>
@@ -16,4 +23,5 @@
       <% end %>
     <% end %>
   </div>
+  <%= paginate @games %>
 </div>
