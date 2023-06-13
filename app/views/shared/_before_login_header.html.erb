@@ -1,10 +1,10 @@
 <header class="py-6 bg-black text-white">
   <div class="container mx-auto flex justify-between items-center px-8 md:px-1 lg:px-7 w-full">
-    <%= link_to 'GunnerGuides', '#', class: "text-3xl font-bold" %>
+    <%= link_to 'GunnerGuides', root_path, class: "text-3xl font-bold" %>
     <div class="space-x-10 hidden md:flex items-center">
-      <%= link_to 'ゲーム一覧', '#', class: "hover:text-purple-500 transiton-all duration-300" %>
+      <%= link_to 'ゲーム一覧', games_path, class: "hover:text-purple-500 transiton-all duration-300" %>
       <%= link_to 'ログイン', login_path, class: "hover:text-purple-500 transiton-all duration-300" %>
-      <%= link_to '新規ユーザー登録(無料)', '#', class: "px-6 py-2 bg-purple-400 text-white font-bold rounded-lg hover:bg-purple-600 transiton-all duration-300" %>
+      <%= link_to '新規ユーザー登録(無料)', new_user_path, class: "px-6 py-2 bg-purple-400 text-white font-bold rounded-lg hover:bg-purple-600 transiton-all duration-300" %>
     </div>
     <div class="md:hidden">
       <i class="fa-solid fa-bars text-3xl"></i>
