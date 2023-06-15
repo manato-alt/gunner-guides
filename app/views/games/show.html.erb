@@ -1,10 +1,10 @@
-<div class="bg-[#161617]">
-  <div class="w-4/5 mx-auto text-white py-10">
-    <h2 class="text-3xl mb-2">目的別コース</h2>
-    <h3 class="text-[#cecece]">あなたのSTEPに合わせて選択しよう<br>始めたばかりの方は「1.設定を変更する」から始めましょう</h3>
-  </div>
-  <div class="w-4/5 mx-auto">
-    <div class="bg-white flex items-center mb-4 border rounded-lg p-4">
+<div>
+  <div class="w-4/5 mx-auto my-9 rounded-lg shadow-lg">
+    <div class="p-8 bg-[#a7c2f3] rounded-t-lg text-white">
+      <h2 class="text-[19px] mb-2">目的別コース</h2>
+      <h3 class="text-[35px]">あなたのSTEPに合わせて選択しよう<br>始めたばかりの方は「1.設定を変更する」から始めましょう</h3>
+    </div>
+    <div class="flex items-center mb-4 p-4 border rounded-b-lg">
       <%= image_tag @game.logo_url, class: "h-24 w-24 object-contain mr-4" %>
       <div>
         <%= content_tag :div, @game.title, class: "font-bold mb-2" %>
@@ -12,9 +12,9 @@
       </div>
     </div>
   </div>
-  <div class="w-4/5 mx-auto py-6">
+  <div class="w-4/5 mx-auto pb-4">
     <%= link_to(setting_game_path(@game.title)) do %>
-      <div class="bg-white flex items-center mb-4 border rounded-lg p-4 h-72 hover:scale-105 transition duration-300">
+      <div class="flex items-center mb-4 border rounded-lg p-4 h-72 hover:scale-105 transition duration-300 shadow-md">
         <%= image_tag src="https://placehold.jp/300x200.png", class: "object-contain mr-4" %>
         <div>
           <h4 class="text-3xl mb-2">
@@ -26,7 +26,7 @@
       </div>
     <% end %>
     <%= link_to(training_game_path(@game.title)) do %>
-      <div class="bg-white flex items-center mb-4 border rounded-lg p-4 h-72 hover:scale-105 transition duration-300">
+      <div class="flex items-center mb-4 border rounded-lg p-4 h-72 hover:scale-105 transition duration-300 shadow-md">
         <%= image_tag src="https://placehold.jp/300x200.png", class: "object-contain mr-4" %>
         <div>
           <h4 class="text-3xl mb-2">
@@ -38,7 +38,7 @@
       </div>
     <% end %>
     <%= link_to(information_game_path(@game.title)) do %>
-      <div class="bg-white flex items-center border rounded-lg p-4 h-72 hover:scale-105 transition duration-300">
+      <div class="bg-white flex items-center border rounded-lg p-4 h-72 hover:scale-105 transition duration-300 shadow-md">
         <%= image_tag src="https://placehold.jp/300x200.png", class: "object-contain mr-4" %>
         <div>
           <h4 class="text-3xl mb-2">
