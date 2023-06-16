@@ -1,46 +1,53 @@
-<div class="bg-[#161617]">
-  <div class="w-4/5 mx-auto  border rounded-lg p-4">
-    <div class="bg-white flex items-center mb-4">
+<div>
+  <div class="w-4/5 mx-auto my-9 rounded-lg shadow-lg">
+    <div class="p-8 bg-[#a7c2f3] rounded-t-lg text-white flex items-center">
+      <div>
+        <h4 class="text-[19px] mb-2">
+          <span>知識をつける</span>
+        </h4>
+        <p class="text-[35px]">解説、雑学をメインにコンテンツをピックアップ。<br>知識をつけて実践で有利に立ち回りましょう</p>
+      </div>
+      <%= image_tag src="https://placehold.jp/250x140.png", class: "object-contain mr-4" %>
+    </div>
+    <div class="flex items-center mb-4 p-4 border rounded-b-lg">
       <%= image_tag @game.logo_url, class: "h-24 w-24 object-contain mr-4" %>
       <div>
         <%= content_tag :div, @game.title, class: "font-bold mb-2" %>
         <%= content_tag :div, @game.description, class: "text-sm" %>
       </div>
     </div>
-    <div class="bg-white flex items-center mb-4 border rounded-lg p-4 h-36 ">
-      <%= image_tag src="https://placehold.jp/150x100.png", class: "object-contain mr-4" %>
-      <div>
-        <h4 class="text-3xl mb-2">
-          <span class="text-amber-500">3.</span>
-          <span>知識をつける</span>
-        </h4>
-        <p class="text-neutral-500">解説、雑学をメインにコンテンツをピックアップ。知識をつけて実践で有利に立ち回りましょう</p>
-      </div>
-    </div>
   </div>
-  <div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 m-8">
     <% @videos.each do |video| %>
-      <div class="flex items-center">
+      <div class="rounded-lg shadow-md p-2 border hover:scale-105 transition duration-300">
         <%= link_to  purpose_path(@game.title, video) do %>
-          <%= image_tag video.thumbnail_url %>
-          <p class="text-white"><%= video.title %></p>
-        <% end %>
-        <% if current_user %>
-          <div class="flex flex-col items-end ml-4 text-white">
-            <div class="mb-2">
-              <% uservideo = Uservideo.find_by(user_id: current_user.id, video_id: video.id) %>
-              <% watched_checked = uservideo&.watched_status == 1 ? true : false %>
-              <%= check_box_tag "watched_status[#{video.id}]", 1, [1, 2].include?(uservideo&.watched_status), disabled: true %>
-              <%= label_tag "watched_status[#{video.id}]", "視聴済み" %>
-            </div>
-            <div>
-              <% practiced_checked = uservideo&.watched_status == 2 ? true : false %>
-              <%= check_box_tag "watched_status[#{video.id}]", 2, practiced_checked, disabled: true %>
-              <%= label_tag "watched_status[#{video.id}]", "完了済み" %>
-            </div>
-          </div>  
+          <div class="flex justify-between items-center">
+            <%= image_tag video.thumbnail_url, class: "h-auto w-7/12 rounded-t-lg ml-4" %>
+            <% if current_user %>
+              <div class="flex flex-col mr-7">
+                <div class="mb-2">
+                  <% uservideo = Uservideo.find_by(user_id: current_user.id, video_id: video.id) %>
+                  <% watched_checked = uservideo&.watched_status == 1 ? true : false %>
+                  <%= check_box_tag "watched_status[#{video.id}]", 1, [1, 2].include?(uservideo&.watched_status), disabled: true %>
+                  <%= label_tag "watched_status[#{video.id}]", "視聴済み" %>
+                </div>
+                <div>
+                  <% practiced_checked = uservideo&.watched_status == 2 ? true : false %>
+                  <%= check_box_tag "watched_status[#{video.id}]", 2, practiced_checked, disabled: true %>
+                  <%= label_tag "watched_status[#{video.id}]", "完了済み" %>
+                </div>
+              </div>  
+            <% end %>
+          </div>
+          <div>
+            <p class="text-base sm:text-lg font-semibold mb-2 p-4"><%= video.title %></p>
+          </div>
         <% end %>
       </div>
     <% end %>
+  </div>
+  <div class="mb-4 text-center text-[20px]">
+    <%= paginate @videos %>
   </div>
 </div>
