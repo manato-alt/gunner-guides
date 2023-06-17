@@ -1,9 +1,28 @@
-<turbo-frame id="complete-button">
-  <% if current_user %>
-    <% if @uservideo.watched_status == 1 %>
-      <%= button_to '完了', uservideo_path(@uservideo), method: :put, remote: true, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded", data: { turbo_frame: "uservideo_frame" } %>
-    <% elsif @uservideo.watched_status == 2 %>
-      <%= button_to '完了済み', uservideo_path(@uservideo), method: :put, remote: true, class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded", data: { turbo_frame: "uservideo_frame" } %>
-    <% end %>
-  <% end %>
-</turbo-frame>
+<div id="home-section">
+  <turbo-frame id="complete-button">
+    <div class="text-center">
+      <p class="mb-5">ゲーム内で実践後、下記の完了ボタンを押してください</p>
+      <% if current_user %>
+        <% if @uservideo.watched_status == 1 %>
+          <%= button_to '完了', uservideo_path(@uservideo), method: :put, remote: true, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold text-3xl py-4 px-10 rounded-full", data: { turbo_frame: "uservideo_frame" } %>
+        <% elsif @uservideo.watched_status == 2 %>
+          <%= button_to '完了済み', uservideo_path(@uservideo), method: :put, remote: true, class: "bg-green-500 hover:bg-green-700 text-white font-bold text-3xl py-4 px-10 rounded-full", data: { turbo_frame: "uservideo_frame" } %>
+        <% end %>
+      <% end %>
+    </div>
+  </turbo-frame>
+</div>
+<script>
+  var homeLink = document.getElementById('home-link');
+  var memoLink = document.getElementById('memo-link');
+  var homeSection = document.getElementById('home-section');
+  var memoSection = document.getElementById('memo-section');
+
+  if (homeSection) {
+    homeLink.classList.add('underline');
+    memoLink.classList.remove('underline');
+  } else if (memoSection) {
+    homeLink.classList.remove('underline');
+    memoLink.classList.add('underline');
+  }
+</script>
