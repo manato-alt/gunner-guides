@@ -1,12 +1,18 @@
-<%= form_with(model: @memo, url: memo_path(@memo), method: :patch) do |form| %>
-  <% if @memo.errors.any? %>
-    <ul>
-      <% @memo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+<div class="my-3">
+  <%= form_with(model: @memo, url: memo_path(@memo), method: :patch) do |form| %>
+    <% if @memo.errors.any? %>
+      <ul>
+        <% @memo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div>
+      <%= form.text_area :content, class: 'w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+    </div>
+    <div class="flex justify-end">
+      <%= form.submit '更新', class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md cursor-pointer" %>
+      <%= form.submit 'キャンセル', class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md ml-2 cursor-pointer" %>
+    </div>
   <% end %>
-  <%= form.text_area :content %>
-  <%= form.submit 'Update Memo' %>
-  <%= form.submit 'キャンセル' %>
-<% end %>
+</div>
