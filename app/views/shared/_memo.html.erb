@@ -24,7 +24,7 @@
     <div class="flex flex-row items-center w-6/12 mx-auto">
       <div>
         <%= form_tag memo_section_path(@uservideo), method: :get, class: "" do %>
-          <%= select_tag :sort, options_for_select({ "更新が新しい順" => "newest", "更新が古い順" => "oldest" }, session[:selected_sort]), prompt: '更新が新しい順' %>
+          <%= select_tag :sort, options_for_select({ "更新が新しい順" => "newest", "更新が古い順" => "oldest" }, session[:selected_sort]), prompt: '並び替え' %>
           <%= submit_tag 'フィルタ', class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md cursor-pointer" %>
         <% end %>
       </div>
