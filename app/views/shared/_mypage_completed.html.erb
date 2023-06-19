@@ -1,13 +1,12 @@
-<div class="mx-4">
+<div id="complete-section">
   <%= form_tag complete_path, method: :get, class: "mb-4" do %>
-    <%= select_tag :game_id, options_for_select(Game.pluck(:title, :id), session[:selected_game_id]), prompt: 'Select Game' %>
-    <%= select_tag :category_id, options_for_select(Category.pluck(:name, :id), session[:selected_category_id]), prompt: 'Select Category' %>
-    <%= select_tag :sort, options_for_select({ "Newest First" => "newest", "Oldest First" => "oldest" }, session[:selected_sort]), prompt: 'Sort By' %>
-    <%= submit_tag 'Filter' %>
+    <%= select_tag :game_id, options_for_select(Game.pluck(:title, :id), session[:selected_game_id]), prompt: 'ゲーム' %>
+    <%= select_tag :category_id, options_for_select(Category.pluck(:name, :id), session[:selected_category_id]), prompt: 'カテゴリー' %>
+    <%= submit_tag 'フィルタ', class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md cursor-pointer" %>
   <% end %>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
     <% @videos.each do |video| %>
-      <div class="bg-white rounded-lg shadow-md p-2">
+      <div class="bg-white rounded-lg shadow-md p-2 hover:scale-105 transition duration-300">
         <%= link_to  purpose_path(video.game.title, video), data: { turbo: "false" } do %>
           <img class="rounded-t-lg" src="<%= video.thumbnail_url %>" alt="Thumbnail">
           <div class="p-4">
@@ -18,5 +17,31 @@
       </div>
     <% end %>
   </div>
-  <%= paginate @videos %>
+  <div class="mt-4 mb-10 text-center text-[20px]">
+    <%= paginate @videos %>
+  </div>
 </div>
+
+<script>
+  var watchLink = document.getElementById('watch-link');
+  var completeLink = document.getElementById('complete-link');
+  var memoLink = document.getElementById('memo-link');
+
+  var watchSection = document.getElementById('watch-section');
+  var completeSection = document.getElementById('complete-section');
+  var memoSection = document.getElementById('memo-section');
+
+  if (watchSection) {
+    watchLink.classList.add('underline');
+    completeLink.classList.remove('underline');
+    memoLink.classList.remove('underline');
+  } else if (completeSection) {
+    completeLink.classList.add('underline');
+    watchLink.classList.remove('underline');
+    memoLink.classList.remove('underline');
+  } else if (memoSection) {
+    memoLink.classList.add('underline');
+    watchLink.classList.remove('underline');
+    completeLink.classList.remove('underline');
+  }
+</script>
