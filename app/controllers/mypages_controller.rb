@@ -9,7 +9,7 @@ class MypagesController < ApplicationController
   def watch
     videos = Video.where(id: Uservideo.where(user_id: current_user.id, watched_status: 1).pluck(:video_id))
     @videos = videos.page(params[:page]).per(12)
-
+    
     if params[:game_id].present?
       @videos = @videos.where(game_id: params[:game_id])
       session[:selected_game_id] = params[:game_id]
@@ -22,13 +22,6 @@ class MypagesController < ApplicationController
       session[:selected_category_id] = params[:category_id]  # 選択されたcategory_idをセッションに保存
     else
       session[:selected_category_id] = nil  # セッションをクリア
-    end
-
-    if params[:sort].present? && ["newest", "oldest"].include?(params[:sort])
-      @videos = @videos.order(updated_at: params[:sort] == "newest" ? :desc : :asc)
-      session[:selected_sort] = params[:sort]
-    else
-      session[:selected_sort] = nil
     end
 
     render turbo_stream: turbo_stream.update(
@@ -53,15 +46,7 @@ class MypagesController < ApplicationController
       session[:selected_category_id] = params[:category_id]  # 選択されたcategory_idをセッションに保存
     else
       session[:selected_category_id] = nil  # セッションをクリア
-    end
-
-    if params[:sort].present? && ["newest", "oldest"].include?(params[:sort])
-      @videos = @videos.order(updated_at: params[:sort] == "newest" ? :desc : :asc)
-      session[:selected_sort] = params[:sort]
-    else
-      session[:selected_sort] = nil
-    end
-  
+    end  
 
     render turbo_stream: turbo_stream.update(
       'section',
@@ -81,13 +66,13 @@ class MypagesController < ApplicationController
     end
   
     if params[:order].present? && ["newest", "oldest"].include?(params[:order])
-      @memos = @memos.order(created_at: params[:order] == "newest" ? :desc : :asc)
+      @memos = @memos.order(updated_at: params[:order] == "newest" ? :desc : :asc)
       session[:selected_sort] = params[:order]
     else
       session[:selected_sort] = nil
     end
 
-    @memos = @memos.order(created_at: :desc) unless params[:order].present?
+    @memos = @memos.order(updated_at: :desc) unless params[:order].present?
 
     render turbo_stream: turbo_stream.update(
       'section',
