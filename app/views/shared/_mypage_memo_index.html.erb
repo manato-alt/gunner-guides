@@ -1,11 +1,27 @@
-<div class="memo-item">
+<div class="my-7">
   <%= link_to  purpose_path(memo.video.game.title, memo.video), data: { turbo: "false" } do %>
     <h3><%= memo.video.title %></h3>
   <% end %>
-  <p><%= memo.content %></p>
-  <%= link_to 'Edit', edit_memo_path(memo) %>
-  <%= link_to 'Delete', memo_path(memo), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%>
-  <turbo-frame id="memo_edit_<%= memo.id %>">
-  </turbo-frame>  
-  <!-- 他のメモの情報や操作ボタンなどを追加 -->
+  <div class="w-6/12 ml-5">
+    <li>
+      <div class="flex justify-between">
+        <div>
+          <%= time_ago_in_words(memo.updated_at) %>前
+        </div>
+        <div>
+          <%= link_to edit_memo_path(memo) do %>
+            <i class="fas fa-pen"></i>
+          <% end %>
+          <%= link_to memo_path(memo), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "mx-4" do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        </div>
+      </div>
+      <div class="border rounded p-4 text-left bg-[#f7f9fa]">
+        <%= memo.content %>
+      </div>
+      <turbo-frame id="memo_edit_<%= memo.id %>">
+      </turbo-frame>
+    </li>
+  </div>   
 </div>
