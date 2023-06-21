@@ -1,7 +1,29 @@
-<h1 class="text-center">ユーザー詳細</h1>
-<ul>
-  <li><strong>email:</strong> <%= @user.email %></li>
-  <li><strong>視聴数:</strong> <%= @watched_count %></li>
-  <li><strong>完了数:</strong> <%= @completed_count %></li>
-</ul>
+<div class="w-4/6 mx-auto mt-4 text-3xl">
+  <div class="text-center my-3">
+    <h1 class="text-5xl">ユーザー詳細</h1>
+  </div>
+  <div class="border-4 text-center">
+    <div class="border-b-2 py-6">
+      <%= @user.email %>
+    </div>
+    <div class="flex justify-evenly py-6">
+      <div>
+        <div>
+          <%= @watched_count %>
+        </div>
+        <div>
+          <span>視聴数</span>
+        </div>
+      </div>
+      <div>
+        <div>
+          <%= @completed_count %>
+        </div>
+        <div>
+          <span>完了数</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
