@@ -1,23 +1,28 @@
-<div>
-  <div>
-    <h1 class="text-center">ゲーム詳細</h1>
+<div class="w-3/6 mx-auto mt-4 text-3xl">
+  <div class="text-center my-3">
+    <h1 class="text-3xl">ゲーム詳細</h1>
   </div>
-  <div>
-    <div>
-      <p>ゲームロゴ</p>
-      <%= image_tag @game.logo_url, class: "h-24 w-24 object-contain mr-4" %>
+  <div class="border-4 text-center">
+    <div class="border-b-2">
+      <p>ロゴ・タイトル</p>
+    </div>
+    <div class="flex justify-center py-6">
+      <%= image_tag @game.logo_url, class: "h-24 w-24 object-contain" %>
     </div>
     <div>
-      <p>ゲームタイトル</p>
       <%= content_tag :div, @game.title, class: "font-bold mb-2" %>
     </div>
-    <div>
+    <div class="border-y-2 mt-7">
       <p>ゲーム概要</p>
+    </div>
+    <div class="pt-3">
       <%= content_tag :div, @game.description, class: "text-sm" %>
     </div>
-    <div>
+    <div class="border-y-2 mt-7">
       <p>ゲーム情報作成日時</p>
-      <%= content_tag :div, @game.created_at, class: "text-sm" %>
+    </div>
+    <div class="py-3">
+      <%= content_tag :div, @game.created_at.strftime("%Y年%m月%d日 %H:%M:%S"), class: "text-sm" %>
     </div>
   </div>
 </div>
