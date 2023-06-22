@@ -1,23 +1,37 @@
-<div>
-  <div>
-    <h1 class="text-center">動画詳細</h1>
+<div class="w-3/6 mx-auto mb-8 text-3xl">
+  <div class="text-center my-3">
+    <h1 class="text-3xl">動画詳細</h1>
   </div>
-  <div>
-    <div>
+  <div class="border-4 text-center">
+    <div class="border-b-2">
       <p>サムネイル</p>
-      <%= image_tag @video.thumbnail_url, class: "h-24 w-24 object-contain mr-4" %>
     </div>
-    <div>
+    <div class="flex justify-center py-6">
+      <%= image_tag @video.thumbnail_url, class: "object-contain" %>
+    </div>
+    <div class="border-y-2 mt-7">
+      タイトル
+    </div>
+    <div class="pt-3">
+      <%= content_tag :div, @video.title %>
+    </div>
+    <div class="border-y-2 mt-7">
       <p>動画ID</p>
-      <%= content_tag :div, @video.id, class: "text-sm" %>
     </div>
-    <div>
+    <div class="pt-3">
+      <%= content_tag :div, @video.id%>
+    </div>
+    <div class="border-y-2 mt-7">
       <p>動画埋め込みコード</p>
-      <%= content_tag :div, @video.embed_code, class: "font-bold mb-2" %>
     </div>
-    <div>
+    <div class="pt-3">
+      <%= content_tag :div, @video.embed_code %>
+    </div>
+    <div class="border-y-2 mt-7">
       <p>動画情報作成日時</p>
-      <%= content_tag :div, @video.created_at, class: "text-sm" %>
+    </div>
+    <div class="py-3">
+      <%= content_tag :div, @video.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>
     </div>
   </div>
 </div>
