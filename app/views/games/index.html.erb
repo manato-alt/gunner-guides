@@ -17,8 +17,7 @@
         <div class="flex items-center mb-4 border rounded-lg p-4 hover:scale-105 transition duration-300 shadow-md">
           <%= image_tag game.logo_url, class: "h-24 w-24 object-contain mr-4" %>
           <div>
-            <%= content_tag :div, game.title, class: "font-bold mb-2" %>
-            <%= content_tag :div, truncate(game.description, length: 100), class: "text-sm" %>
+            <%= content_tag :div, game.title, class: "font-bold mb-2 text-lg" %>
           </div>
         </div>
       <% end %>
