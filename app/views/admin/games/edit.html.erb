@@ -1,6 +1,6 @@
 <div class="w-3/6 mx-auto mt-4 text-3xl">
   <div class="text-center my-3">
-    <h1 class="text-3xl">ゲーム編集</h1>
+    <h1 class="text-3xl">ゲーム情報編集</h1>
   </div>
   <%= form_with(model: @game, url: admin_game_path(@game), local: true) do |form| %>
     <% if @game.errors.any? %>
