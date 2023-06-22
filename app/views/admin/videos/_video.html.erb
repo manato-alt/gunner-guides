@@ -1,8 +1,8 @@
 <%= turbo_frame_tag video do %>
-  <div class="flex items-center">
-    <div class="mr-4"><%= image_tag video.thumbnail_url, class: "h-24 w-24 object-contain mr-4" %></div>
-    <div class="mr-4"><%= content_tag :div, truncate(video.title, length: 40), class: "font-bold mb-2" %></div>
-    <div class="ml-auto">
+  <div class="grid grid-cols-3 border rounded p-4 bg-[#f7f9fa] items-center">
+    <div><%= image_tag video.thumbnail_url, class: "h-24 w-24 object-contain mr-4" %></div>
+    <div><%= content_tag :div, truncate(video.title, length: 40), class: "font-bold mb-2" %></div>
+    <div>
       <%= link_to '詳細', admin_video_path(video), data: { turbo: "false" } %> |
       <%= link_to '編集', edit_admin_video_path(video), data: { turbo: "false" } %> |
       <%= link_to '削除', admin_video_path(video), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%>

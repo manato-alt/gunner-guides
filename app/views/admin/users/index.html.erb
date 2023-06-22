@@ -1,21 +1,24 @@
-<div>
+<div class="w-4/6 mx-auto mt-4">
   <%= form_tag admin_root_path, method: :get, class: "mb-4" do %>
-    <%= label_tag :email, "Emailで検索" %>
-    <%= text_field_tag :email, params[:email] %>
+    <%= text_field_tag :email, params[:email], placeholder: "Emailで検索", class: "rounded-lg py-2 pl-4 pr-10 focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
 
-    <%= label_tag :role, "Roleで絞り込み" %>
-    <%= select_tag :role, options_for_select(User.roles.keys, params[:role]), prompt: "すべて" %>
+    <%= select_tag :role, options_for_select(User.roles.keys, params[:role]), prompt: "権限", class: "rounded-lg py-2 pl-4 pr-10 focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
 
-    <%= submit_tag "検索" %>
+    <%= button_tag type: :submit do %>
+      <i class="fas fa-magnifying-glass pl-1"></i>
+    <% end %>
   <% end %>
+  <div>
+    <div class="grid grid-cols-3 px-4">
+      <div>Email</div>
+      <div>Role</div>
+      <div>Actions</div>
+    </div>
+    <%= render @users %>
+    <div class="py-7 text-center text-[20px]">
+      <%= paginate @users %>
+    </div>  
+  </div>  
 </div>
-<div>
-  <div class="grid grid-cols-3">
-    <div>Email</div>
-    <div>Role</div>
-    <div>Actions</div>
-  </div>
-  <%= render @users %>
-  <%= paginate @users %>
-</div>
+
 

@@ -1,11 +1,42 @@
-<%= form_tag mypage_memo_path, method: :get, class: "mb-4" do %>
-  <%= select_tag :game_id, options_for_select(Game.pluck(:title, :id), session[:game_id]), prompt: 'Select Game' %>
-  <%= select_tag :order, options_for_select({ "Newest First" => "newest", "Oldest First" => "oldest" }, session[:selected_sort]), prompt: 'Sort By' %>
-  <%= submit_tag 'Filter' %>
-<% end %>
-<% @memos.each do |memo| %>
-  <turbo-frame id="memo_update_<%= memo.id %>">
-    <%= render 'shared/mypage_memo_index', memo: memo %>
-  </turbo-frame>
-<% end %>
-<%= paginate @memos %>
+<div id="memo-section">
+  <%= form_tag mypage_memo_path, method: :get, class: "mb-4" do %>
+    <%= select_tag :game_id, options_for_select(Game.pluck(:title, :id), session[:game_id]), prompt: 'ゲーム' %>
+    <%= select_tag :order, options_for_select({ "更新が新しい順" => "newest", "更新が古い順" => "oldest" }, session[:selected_sort]), prompt: '並び替え' %>
+    <%= submit_tag 'フィルタ', class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md cursor-pointer" %>
+  <% end %>
+  <ul>
+    <% @memos.each do |memo| %>
+      <turbo-frame id="memo_update_<%= memo.id %>">
+        <%= render 'shared/mypage_memo_index', memo: memo %>
+      </turbo-frame>
+    <% end %>
+  </ul>
+
+  <div class="mt-4 mb-10 text-center text-[20px]">
+    <%= paginate @memos %>
+  </div>
+</div>
+
+<script>
+  var watchLink = document.getElementById('watch-link');
+  var completeLink = document.getElementById('complete-link');
+  var memoLink = document.getElementById('memo-link');
+
+  var watchSection = document.getElementById('watch-section');
+  var completeSection = document.getElementById('complete-section');
+  var memoSection = document.getElementById('memo-section');
+
+  if (watchSection) {
+    watchLink.classList.add('underline');
+    completeLink.classList.remove('underline');
+    memoLink.classList.remove('underline');
+  } else if (completeSection) {
+    completeLink.classList.add('underline');
+    watchLink.classList.remove('underline');
+    memoLink.classList.remove('underline');
+  } else if (memoSection) {
+    memoLink.classList.add('underline');
+    watchLink.classList.remove('underline');
+    completeLink.classList.remove('underline');
+  }
+</script>

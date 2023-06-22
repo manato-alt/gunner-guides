@@ -5,6 +5,15 @@ class MemosController < ApplicationController
     @user = User.find(@uservideo.user_id)
     @video = Video.find(@uservideo.video_id)
     @memos = Memo.where(user_id: @user.id, video_id: @video.id)
+    @memos = @memos.page(params[:page]).per(20)
+    if params[:sort].present? && ["newest", "oldest"].include?(params[:sort])
+      @memos = @memos.order(updated_at: params[:sort] == "newest" ? :desc : :asc)
+      session[:selected_sort] = params[:sort]
+    else
+      session[:selected_sort] = nil
+    end
+    @memos = @memos.order(updated_at: :desc) unless params[:order].present?
+
     render turbo_stream: turbo_stream.update(
       'section',
       partial: 'shared/memo',
@@ -15,6 +24,8 @@ class MemosController < ApplicationController
     @memo = Memo.new(memo_params)
     @uservideo = Uservideo.find_by(user_id: @memo.user_id, video_id: @memo.video_id)
     @memos = Memo.where(user_id: @memo.user_id, video_id: @memo.video_id) # @memos を再度取得
+    @memos = @memos.order(updated_at: :desc)
+    @memos = @memos.page(params[:page]).per(20)
     @user = User.find(@uservideo.user_id)
     @video = Video.find(@uservideo.video_id)  
 

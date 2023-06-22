@@ -1,18 +1,18 @@
 class PurposesController < ApplicationController
   def setting
     @game = Game.find_by!(title: params[:title])
-    @videos = Video.joins(:category).where(categories: { name: "setting" }, game_id: @game.id)
+    @videos = Video.joins(:category).where(categories: { name: "setting" }, game_id: @game.id).page(params[:page]).per(12)
   end
 
   def training
     @game = Game.find_by!(title: params[:title])
-    @videos = Video.joins(:category).where(categories: { name: "training" }, game_id: @game.id)
+    @videos = Video.joins(:category).where(categories: { name: "training" }, game_id: @game.id).page(params[:page]).per(12)
 
   end
 
   def information
     @game = Game.find_by!(title: params[:title])
-    @videos = Video.joins(:category).where(categories: { name: "information" }, game_id: @game.id)
+    @videos = Video.joins(:category).where(categories: { name: "information" }, game_id: @game.id).page(params[:page]).per(12)
   end
 
   def show

@@ -1,9 +1,11 @@
-<h1>マイページ</h1>
-<div>
-  <%= link_to '視聴済み', watch_path, remote: true, class: 'text-blue-500 hover:underline' %>
-  <%= link_to '実践済み', complete_path, remote: true, class: 'text-blue-500 hover:underline'  %>
-  <%= link_to 'メモ', mypage_memo_path, remote: true, class: 'text-blue-500 hover:underline'  %>
+<div class="w-5/6 mx-auto mt-4">
+  <h1 class="text-3xl">マイページ</h1>
+  <div class="border-b w-4/6 text-2xl my-4">
+    <%= link_to '視聴済み', watch_path, remote: true, class: 'text-blue-500 hover:underline pr-3', id: 'watch-link' %>
+    <%= link_to '実践済み', complete_path, remote: true, class: 'text-blue-500 hover:underline pr-3', id: 'complete-link'  %>
+    <%= link_to 'メモ', mypage_memo_path, remote: true, class: 'text-blue-500 hover:underline', id: 'memo-link'  %>
+  </div>
+  <turbo-frame id="section">
+    <%= render 'shared/mypage_watched' %>
+  </turbo-frame>
 </div>
-<turbo-frame id="section">
-  <%= render 'shared/mypage_watched' %>
-</turbo-frame>
