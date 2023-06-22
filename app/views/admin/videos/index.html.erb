@@ -1,20 +1,21 @@
-<div>
+<div class="w-4/6 mx-auto mt-4">
   <%= form_tag admin_videos_path, method: :get, class: "mb-4" do %>
-    <%= label_tag :title, "タイトルで検索" %>
-    <%= text_field_tag :title, params[:title] %>
-
-    <%= label_tag :game_id, "ゲームで絞り込み" %>
-    <%= select_tag :game_id, options_from_collection_for_select(Game.all, :id, :title, params[:game_id]), prompt: "すべてのゲーム" %>
-
-    <%= label_tag :category_id, "カテゴリで絞り込み" %>
-    <%= select_tag :category_id, options_from_collection_for_select(Category.all, :id, :name, params[:category_id]), prompt: "すべてのカテゴリ" %>
-
-    <%= submit_tag "検索" %>
+    <%= text_field_tag :title, params[:title], placeholder: "動画タイトルで検索", class: "rounded-lg py-2 pl-4 pr-10 focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+    <%= select_tag :game_id, options_from_collection_for_select(Game.all, :id, :title, params[:game_id]), prompt: "ゲーム", class: "rounded-lg py-2 pl-4 pr-10 focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+    <%= select_tag :category_id, options_from_collection_for_select(Category.all, :id, :name, params[:category_id]), prompt: "カテゴリ", class: "rounded-lg py-2 pl-4 pr-10 focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+    <%= button_tag type: :submit do %>
+      <i class="fas fa-magnifying-glass pl-1"></i>
+    <% end %>
   <% end %>
-  <div class="grid grid-cols-3">
-    <div>サムネ</div>
-    <div>タイトル</div>
+  <div>
+    <div class="grid grid-cols-3 px-4">
+      <div>thumbnail</div>
+      <div>title</div>
+      <div>actions</div>
+    </div>
+    <%= render @videos %>
+    <div class="py-7 text-center text-[20px]">
+      <%= paginate @videos %>
+    </div>  
   </div>
-  <%= render @videos %>
-  <%= paginate @videos %>
 </div>
