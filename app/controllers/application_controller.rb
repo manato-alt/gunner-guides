@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def check_direct_access
+    unless request.referer.present?
+      redirect_to root_path, alert: '不正なアクセスです。'
+    end
+  end
 end

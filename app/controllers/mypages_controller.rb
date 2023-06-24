@@ -1,6 +1,6 @@
 class MypagesController < ApplicationController
   before_action :require_login
-
+  before_action :check_direct_access, only: %i[watch complete memo]
   def index
     videos = Video.where(id: Uservideo.where(user_id: current_user.id, watched_status: 1).pluck(:video_id))
     @videos = videos.page(params[:page]).per(12)

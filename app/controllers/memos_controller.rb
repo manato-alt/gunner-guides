@@ -1,4 +1,5 @@
 class MemosController < ApplicationController
+  before_action :check_direct_access
   def memo
     @memo = Memo.new
     @uservideo = Uservideo.find(params[:id])
