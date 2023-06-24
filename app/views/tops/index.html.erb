@@ -17,11 +17,9 @@
   <div class="text-center text-[#cecece]">
     <h2 class="font-bold text-2xl md:text-3xl lg:text-4xl mb-6 ">ようこそ、シューティングゲームの世界へ</h2>
     <ul class="flex flex-row justify-center">
-      <li class="mr-6"><%= image_tag("https://placehold.jp/99x99.png", class: "rounded-full") %></li>
-      <li class="mr-6"><%= image_tag("https://placehold.jp/99x99.png", class: "rounded-full") %></li>
-      <li class="mr-6"><%= image_tag("https://placehold.jp/99x99.png", class: "rounded-full") %></li>
-      <li class="mr-6"><%= image_tag("https://placehold.jp/99x99.png", class: "rounded-full") %></li>
-      <li class="mr-6"><%= image_tag("https://placehold.jp/99x99.png", class: "rounded-full") %></li>
+      <% @logo_urls.each do |logo_url| %>
+        <li class="mr-6"><%= image_tag(logo_url, class: "rounded-full border-2") %></li>
+      <% end %>
     </ul>
     <p class="my-5">シューティングゲームをこれから始めたい方も、スキルアップしたい方も。<br>あなたの目的に合った動画で、効率よく成長しよう！</p>
     <%= link_to 'ゲームの基礎を習得しよう', games_path, class: "px-6 py-2 rounded-md text-indigo-600 border-solid border-2 border-indigo-600 font-bold hover:bg-indigo-100 transiton-all duration-300" %>
@@ -31,7 +29,7 @@
   <div class="text-center text-[#cecece]  ">
     <h2 class="font-bold text-2xl md:text-3xl lg:text-4xl mb-6">STEPに沿って学ぶ</h1>
     <div class="flex justify-center">
-      <%= image_tag("https://placehold.jp/650x300.png", class: "mx-auto rounded-md") %>
+      <%= image_tag "stepandmemo.jpg", class: "object-contain border-2", size: "500x300" %>
     </div>
     <p class="my-5">シューティングゲームに必要な要素を最適な順番で学ぶことができます<br>要点をまとめておくことでいつでも振り返ることができます</p>
   </div>
