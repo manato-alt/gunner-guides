@@ -5,9 +5,14 @@
         <h4 class="text-[19px] mb-2">
           <span>練習方法を見つける</span>
         </h4>
-        <p class="text-[35px]">練習に関するコンテンツをピックアップ。<br>自分にあった練習方法を見つけ、効率よく<br>上達しましょう</p>
+        <p class="text-[35px]">練習に関するコンテンツをピックアップ
       </div>
-      <%= image_tag src="https://placehold.jp/250x140.png", class: "object-contain m-4" %>
+      <figure class="ml-20">
+        <%= image_tag "training.jpg", class: "object-contain", size: "300x200" %>
+        <figcaption>
+          著作者：<a href="https://jp.freepik.com/free-vector/flat-game-streamer-concept-elements_13561851.htm">Freepik</a>
+        </figcaption>
+      </figure>
     </div>
     <div class="flex items-center mb-4 p-4 border rounded-b-lg">
       <%= image_tag @game.logo_url, class: "h-24 w-24 object-contain mr-4" %>
