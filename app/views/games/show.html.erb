@@ -13,33 +13,46 @@
     </div>
   </div>
   <div class="w-4/5 mx-auto pb-4">
-    <%= link_to(setting_game_path(@game.title)) do %>
-      <div class="flex items-center mb-4 border rounded-lg p-4 h-72 hover:scale-105 transition duration-300 shadow-md">
-        <%= image_tag src="https://placehold.jp/300x200.png", class: "object-contain mr-4" %>
-        <div>
-          <h4 class="text-3xl mb-2">
-            <span class="text-amber-500">1.</span>
-            <span>設定を変更する</span>
-          </h4>
-          <p class="text-neutral-500">「グラフィック設定」や「ボタン配置設置」を始めとして、初期設定をしっかりやるのとデフォルトで適当にやるのではゲームの上達速度が全く違ってきます。時間経過と共に変更する敷居が高くなるので最初にやることをお勧めします</p>
+    <div class="mb-4">
+      <%= link_to(setting_game_path(@game.title)) do %>
+        <div class="flex items-center border rounded-lg p-10 h-72 hover:scale-105 transition duration-300 shadow-md">
+          <%= image_tag "setting.jpg", class: "object-contain mr-7", size: "250x200" %>
+          <div>
+            <h4 class="text-3xl mb-2">
+              <span class="text-amber-500">1.</span>
+              <span>設定を変更する</span>
+            </h4>
+            <p class="text-neutral-500">「グラフィック設定」や「ボタン配置設置」を始めとして、初期設定をしっかりやるのとデフォルトで適当にやるのではゲームの上達速度が全く違ってきます。時間経過と共に変更する敷居が高くなるので最初にやることをお勧めします</p>
+          </div>
         </div>
+      <% end %>
+      <div class="flex justify-end">
+        <a href="https://jp.freepik.com/free-vector/custom-style-script-website-optimization-coding-software-development-female-programmer-cartoon-character-working-adding-javascript-css-code_11669143.htm#from_view=detail_author">著作者：vectorjuice</a>／出典：Freepik
       </div>
-    <% end %>
-    <%= link_to(training_game_path(@game.title)) do %>
-      <div class="flex items-center mb-4 border rounded-lg p-4 h-72 hover:scale-105 transition duration-300 shadow-md">
-        <%= image_tag src="https://placehold.jp/300x200.png", class: "object-contain mr-4" %>
-        <div>
-          <h4 class="text-3xl mb-2">
-            <span class="text-amber-500">2.</span>
-            <span>練習方法を見つける</span>
-          </h4>
-          <p class="text-neutral-500">練習に関するコンテンツをピックアップ。自分にあった練習方法を見つけ、日々積み重ねることで効率よく上達しましょう</p>
+    </div>
+
+    <div class="mb-4">
+      <%= link_to(training_game_path(@game.title)) do %>
+        <div class="flex items-center border rounded-lg p-10 h-72 hover:scale-105 transition duration-300 shadow-md">
+          <%= image_tag "training.jpg", class: "object-contain mr-7", size: "250x200" %>
+          <div>
+            <h4 class="text-3xl mb-2">
+              <span class="text-amber-500">2.</span>
+              <span>練習方法を見つける</span>
+            </h4>
+            <p class="text-neutral-500">練習に関するコンテンツをピックアップ。自分にあった練習方法を見つけ、日々積み重ねることで効率よく上達しましょう</p>
+          </div>
         </div>
+      <% end %>
+      <div class="flex justify-end">
+        著作者：<a href="https://jp.freepik.com/free-vector/flat-game-streamer-concept-elements_13561851.htm">Freepik</a>
       </div>
-    <% end %>
+    </div>
+
+
     <%= link_to(information_game_path(@game.title)) do %>
-      <div class="bg-white flex items-center border rounded-lg p-4 h-72 hover:scale-105 transition duration-300 shadow-md">
-        <%= image_tag src="https://placehold.jp/300x200.png", class: "object-contain mr-4" %>
+      <div class="bg-white flex items-center border rounded-lg p-10 h-72 hover:scale-105 transition duration-300 shadow-md">
+        <%= image_tag "information.jpg", class: "object-contain mr-7", size: "250x200" %>
         <div>
           <h4 class="text-3xl mb-2">
             <span class="text-amber-500">3.</span>
@@ -49,5 +62,9 @@
         </div>
       </div>
     <% end %>
+    <div class="flex justify-end">
+      <a href="https://jp.freepik.com/free-vector/students-learning-foreign-language-with-vocabulary_11235885.htm#query=%E7%B7%B4%E7%BF%92&position=2&from_view=search&track=sph">著作者：pch.vector</a>／出典：Freepik
+    </div>
+
   </div>
 </div>
