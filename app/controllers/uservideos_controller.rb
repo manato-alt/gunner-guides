@@ -1,4 +1,5 @@
 class UservideosController < ApplicationController
+  before_action :check_direct_access
   def update
     @memo = Memo.new
     @uservideo = Uservideo.find(params[:id])
