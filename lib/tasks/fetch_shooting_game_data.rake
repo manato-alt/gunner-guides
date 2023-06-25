@@ -1,5 +1,6 @@
 require 'net/http'
 require 'json'
+require 'deepl'
 namespace :fetch_shooting_game_data do
   desc "Fetch and save shooting games data from Twitch and Giantbomb APIs"
   task :save_shooting_games => :environment do
@@ -50,6 +51,16 @@ namespace :fetch_shooting_game_data do
     JSON.parse(response.body)
   end
 
+  def translate_text(text)
+    DeepL.configure do |config|
+      config.auth_key = ENV['deepl_api_key']
+      config.host = 'https://api-free.deepl.com' # Default value is 'https://api.deepl.com'
+    end
+    translation = DeepL.translate(text, nil, 'JA')
+    translated_text = translation.text
+    translated_text
+  end
+
   def search_shooter_games(game_names)
     shooter_games = []
     existing_titles = Game.pluck(:title)
@@ -71,16 +82,15 @@ namespace :fetch_shooting_game_data do
             description: json['results']['deck'],
             logo_url: json['results']['image']['icon_url']
           }
-          
           # ジャンルがシューティングの場合のみ追加
           url = URI.parse("https://www.giantbomb.com/api/game/#{game_id}/?api_key=#{ENV['giantbomb_api_key']}&field_list=genres&format=json")
           response = Net::HTTP.get(url)
           json = JSON.parse(response) if response.present?
           if json.present? && json['results'].present?
             genres = json['results']['genres']
-            
             genres.each do |genre|
               if genre['name'].downcase.include?('shooter')
+                game[:description] = translate_text(game[:description])
                 shooter_games << game
                 break
               end
