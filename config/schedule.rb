@@ -7,3 +7,7 @@ job_type :rake, "source /Users/manato/.zshrc; export PATH=\"$HOME/.rbenv/bin:$PA
 every '0 10 1 * *' do
   rake 'fetch_shooting_game_data:save_shooting_games', :environment => 'development'
 end
+
+every '0 0 * * *' do
+  rake 'video_date:save_videos', :environment => 'development'
+end
