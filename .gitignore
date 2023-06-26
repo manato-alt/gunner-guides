@@ -35,3 +35,4 @@ node_modules/
 !/app/assets/builds/.keep
 Procfile.dev
 /.env
+/games.txt
