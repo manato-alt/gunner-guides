@@ -1,0 +1,47 @@
+<div id="playlist-section">
+  <%= render 'shared/flash_message' %>
+  <div class="text-center">
+    <p>下記のボタンを押すことでプレイリストに登録できます</p>
+    <p class="mb-5">※プレイリストの確認・作成はマイページで可能</p>
+    <button id="playlist-add-button" class="bg-green-500 hover:bg-green-700 text-white font-bold text-3xl py-4 px-10 rounded-full">プレイリストに登録</button>
+    <div id="playlist-popup" class="invisible fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="bg-white p-4 rounded shadow-lg relative w-1/3">
+        <%= render 'playlists/playlist_popup' %>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var homeLink = document.getElementById('home-link');
+  var memoLink = document.getElementById('memo-link');
+  var playlistLink = document.getElementById('playlist-link');
+  var homeSection = document.getElementById('home-section');
+  var memoSection = document.getElementById('memo-section');
+  var playlistSection = document.getElementById('playlist-section');
+
+  if (homeSection) {
+    homeLink.classList.add('underline');
+    memoLink.classList.remove('underline');
+    playlistLink.classList.remove('underline');
+  } else if (memoSection) {
+    memoLink.classList.add('underline');
+    homeLink.classList.remove('underline');
+    playlistLink.classList.remove('underline');
+  } else if (playlistSection) {
+    playlistLink.classList.add('underline');
+    homeLink.classList.remove('underline');
+    memoLink.classList.remove('underline');
+  }
+
+  var playlistButton = document.querySelector("#playlist-add-button");
+  var playlistPopup = document.querySelector("#playlist-popup");
+  var closeButton = document.querySelector("#modal-close-button");
+
+  playlistButton.addEventListener("click", () => {
+    playlistPopup.classList.toggle("invisible");
+  });
+
+  closeButton.addEventListener("click", () => {
+    playlistPopup.classList.add("invisible");
+  });
+</script>
