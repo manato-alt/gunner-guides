@@ -1,0 +1,20 @@
+<div class="border-b">
+  <div class="playlist-item flex items-center justify-between pb-2">
+    <div class="flex items-center">
+      <i class="fas fa-folder fa-4x mr-2"></i>
+      <div class="text-left text-3xl ml-3">
+        <%= @playlist.title %>
+      </div>
+    </div>
+    <div>
+      <%= link_to edit_playlist_path(@playlist) do %>
+        <i class="fas fa-pen mr-2"></i>
+      <% end %>
+      <%= link_to playlist_path(@playlist), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "mr-2" do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    </div>
+  </div>
+  <turbo-frame id="playlist_edit_<%= @playlist.id %>">
+  </turbo-frame>
+</div>

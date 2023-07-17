@@ -1,0 +1,12 @@
+<div class="overflow-y-auto" style="max-height: 80vh;">
+  <% @playlists.each do |playlist| %>
+    <%= link_to add_video_playlist_path(playlist, video_id: @video.id), data: { turbo_method: :put }, class: "playlist-item flex items-center border-b pb-2 hover:bg-gray-100", remote: true do %>
+      <i class="fas fa-folder fa-4x mr-2"></i>
+      <div class="text-left">
+        <%= playlist.title %>
+        <p class="text-sm text-gray-500"><%= playlist.videos.count %> 個の動画</p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<button id="modal-close-button" class="font-bold text-4xl rounded absolute -top-2 -right-1"><i class="fa-solid fa-circle-xmark" style="color: #d91717;"></i></i></button>

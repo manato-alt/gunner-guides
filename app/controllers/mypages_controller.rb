@@ -79,4 +79,12 @@ class MypagesController < ApplicationController
       partial: 'shared/mypage_memo',
     )
   end
+
+  def playlist
+    @playlists = current_user.playlists
+    render turbo_stream: turbo_stream.update(
+      'section',
+      partial: 'playlists/index',
+    )
+  end
 end

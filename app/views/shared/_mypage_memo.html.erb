@@ -21,21 +21,32 @@
   var watchLink = document.getElementById('watch-link');
   var completeLink = document.getElementById('complete-link');
   var memoLink = document.getElementById('memo-link');
+  var playlistLink = document.getElementById('playlist-link');
 
   var watchSection = document.getElementById('watch-section');
   var completeSection = document.getElementById('complete-section');
   var memoSection = document.getElementById('memo-section');
+  var playlistSection = document.getElementById('playlist-section');
+
 
   if (watchSection) {
     watchLink.classList.add('underline');
     completeLink.classList.remove('underline');
     memoLink.classList.remove('underline');
+    playlistLink.classList.remove('underline');
   } else if (completeSection) {
     completeLink.classList.add('underline');
     watchLink.classList.remove('underline');
     memoLink.classList.remove('underline');
+    playlistLink.classList.remove('underline');
   } else if (memoSection) {
     memoLink.classList.add('underline');
+    watchLink.classList.remove('underline');
+    completeLink.classList.remove('underline');
+    playlistLink.classList.remove('underline');
+  } else if (playlistSection) {
+    playlistLink.classList.add('underline');
+    memoLink.classList.remove('underline');
     watchLink.classList.remove('underline');
     completeLink.classList.remove('underline');
   }

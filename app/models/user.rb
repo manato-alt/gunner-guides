@@ -10,4 +10,5 @@ class User < ApplicationRecord
   has_many :user_videos, class_name: 'Uservideo', dependent: :destroy
   has_many :videos, through: :user_videos
   has_many :memos, dependent: :destroy
+  has_many :playlists, dependent: :destroy
 end

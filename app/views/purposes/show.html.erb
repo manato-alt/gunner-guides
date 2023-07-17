@@ -12,7 +12,8 @@
       <div class="flex justify-center">
         <div class="border-b w-4/6 text-3xl pl-11 mt-4">
           <%= link_to 'ホーム', home_path(@uservideo), id: 'home-link', remote: true, class: 'text-blue-500  hover:underline pr-3' %>
-          <%= link_to 'メモ', memo_section_path(@uservideo), id: 'memo-link', remote: true, class: 'text-blue-500 hover:underline'  %>
+          <%= link_to 'メモ', memo_section_path(@uservideo), id: 'memo-link', remote: true, class: 'text-blue-500 hover:underline pr-3'  %>
+          <%= link_to 'プレイリスト', playlist_section_path(@uservideo), id: 'playlist-link', remote: true, class: 'text-blue-500 hover:underline'  %>
         </div>
       </div>
       <div class="flex justify-center my-5">
@@ -25,6 +26,7 @@
         <div class="border-b w-4/6 text-3xl pl-11 mt-4 flex justify-start">
           <p class= 'text-blue-500 hover:underline pr-3'>ホーム</p>
           <p class= 'text-blue-500 hover:underline'>メモ</p>
+          <p class= 'text-blue-500 hover:underline'>プレイリスト</p>
         </div>
         <h1 class="mt-10 text-3xl">ログイン後利用可能</h1>
       </div>
