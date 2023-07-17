@@ -1,0 +1,18 @@
+<div class="w-5/6 mx-auto mt-4">
+  <turbo-frame id="playlist_update_<%= @playlist.id %>">
+    <%= render 'playlists/playlist_title' %>
+  </turbo-frame>
+  <% @videos.each do |video| %>
+    <%= link_to  purpose_path(video.game.title, video), data: { turbo: "false" } do %>
+      <div class="flex items-center mb-4 p-4 border rounded-b-lg hover:bg-gray-100">
+        <%= image_tag video.thumbnail_url, class: "h-24 w-24 object-contain mr-4" %>
+        <div>
+          <%= content_tag :div, video.title.truncate(69), class: "font-bold" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="mb-4 text-center text-[20px]">
+    <%= paginate @videos %>
+  </div>
+</div>
