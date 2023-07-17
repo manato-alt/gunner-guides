@@ -1,0 +1,19 @@
+<div class="my-3">
+  <%= form_with(model: @playlist, local: true) do |form| %>
+    <% if @playlist.errors.any? %>
+      <ul>
+        <% @playlist.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div class="flex">
+      <i class="fas fa-folder fa-4x mr-2"></i>
+      <%= form.text_field :title, class: 'w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+    </div>
+    <div class="flex justify-end mt-1">
+      <%= form.submit '更新', class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md cursor-pointer" %>
+      <%= form.submit 'キャンセル', class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md ml-2 cursor-pointer" %>
+    </div>
+  <% end %>
+</div>
