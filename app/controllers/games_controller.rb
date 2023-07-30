@@ -7,6 +7,16 @@ class GamesController < ApplicationController
     end
   end
 
+  def autocomplete
+    if params[:q].present?
+      query = "%#{params[:q]}%"
+      @search_results = Game.where("title LIKE ?", query).pluck(:title)
+    else
+      @search_results = []
+    end
+    render partial: 'autocomplete', formats: :html
+  end
+
   def show
     @game = Game.find_by!(title: params[:title])
   end
