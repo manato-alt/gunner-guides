@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  get 'password_resets/create'
+  get 'password_resets/edit'
+  get 'password_resets/update'
+  get 'password_resets/new'
   namespace :admin do
     root to: 'users#index'
     resources :users, only: %i[show destroy]
@@ -38,4 +43,5 @@ Rails.application.routes.draw do
     end
   end
   get '/autocomplete' , to: 'games#autocomplete'
+  resources :password_resets, only: %i[create edit update new]
 end

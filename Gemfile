@@ -80,3 +80,7 @@ gem 'google-apis-youtube_v3'
 gem 'kaminari'
 gem 'deepl-rb', require: 'deepl'
 gem 'high_voltage'
+
+group :development do
+  gem 'letter_opener_web', '~> 2.0'
+end
