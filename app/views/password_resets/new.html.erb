@@ -1,0 +1,18 @@
+<div class="text-center bg-[#161617] text-[#cecece] py-10 h-screen overflow-hidden">
+  <div class="w-96 border text-center mx-auto bg-black rounded-md flex-grow">
+    <h2 class="text-3xl my-6">パスワードリセット</h2>
+    <p>登録済みのメールアドレスに再登録用<br>リンクを送信します</p>
+    <div class="mt-6 mb-10">
+      <%= form_with url: password_resets_path, local: true do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="text-left flex flex-col mx-6">
+          <%= f.label :email, 'メールアドレス' %>
+          <%= f.email_field :email, placeholder: '***@example.com', class: 'text-black block w-full rounded-lg' %>
+        </div>
+        <div class="mx-6">
+          <%= f.submit '送信', class: 'mt-6 px-6 py-2 w-full bg-purple-400 text-white font-bold rounded-lg hover:bg-purple-600 transiton-all duration-300 cursor-pointer' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
