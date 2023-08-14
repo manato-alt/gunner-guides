@@ -1,8 +1,8 @@
-<div id="watch-section">
+<div id="watch-section" class="min-h-[calc(100vh)]">
   <%= form_tag watch_path, method: :get, class: "mb-4" do %>
     <%= select_tag :game_id, options_for_select(Game.pluck(:title, :id), session[:selected_game_id]), prompt: 'ゲーム' %>
-    <%= select_tag :category_id, options_for_select(Category.pluck(:name, :id), session[:selected_category_id]), prompt: 'カテゴリー' %>
-    <%= submit_tag 'フィルタ', class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md cursor-pointer" %>
+    <%= select_tag :category_id, options_for_select(Category.pluck(:name, :id), session[:selected_category_id]), prompt: 'カテゴリー', class: "mt-1" %>
+    <%= submit_tag 'フィルタ', class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md cursor-pointer mt-1" %>
   <% end %>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
     <% @videos.each do |video| %>

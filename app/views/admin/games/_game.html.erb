@@ -1,8 +1,8 @@
 <%= turbo_frame_tag game do %>
-  <div class="grid grid-cols-3 border rounded p-4 bg-[#f7f9fa] items-center">
-    <div><%= image_tag game.logo_url, class: "h-24 w-24 object-contain mr-4" %></div>
-    <div><%= content_tag :div, game.title, class: "font-bold mb-2" %></div>
-    <div>
+  <div class="grid grid-cols-1 mx-3 md:grid-cols-3 border rounded p-4 bg-[#f7f9fa] items-center">
+    <div class="md:col-span-1"><%= image_tag game.logo_url, class: "h-24 w-24 object-contain mr-4" %></div>
+    <div class="md:col-span-1"><%= content_tag :div, game.title, class: "font-bold mb-2" %></div>
+    <div class="md:col-span-1">
       <%= link_to '詳細', admin_game_path(game), data: { turbo: "false" } %> |
       <%= link_to '編集', edit_admin_game_path(game), data: { turbo: "false" } %> |
       <%= link_to '削除', admin_game_path(game), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%>

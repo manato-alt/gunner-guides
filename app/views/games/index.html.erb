@@ -1,4 +1,4 @@
-<div class="py-20">
+<div class="py-20 px-3">
   <div class="text-center">
     <h2 class="font-bold text-2xl md:text-3xl lg:text-4xl mb-6 ">ゲーム一覧</h2>
     <p class="my-5">学びたいゲームを選んでください<br>＊日本で人気のシューティングゲームのみ対応しています</p>
@@ -16,7 +16,7 @@
       <ul data-autocomplete-target="results"></ul>
     </div>
   </div>
-  <div class="px-10 grid grid-cols-3 gap-4">
+  <div class="px-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     <% @games.each do |game| %>
       <%= link_to(game_path(game.title)) do %>
         <div class="flex items-center mb-4 border rounded-lg p-4 hover:scale-105 transition duration-300 shadow-md">

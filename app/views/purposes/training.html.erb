@@ -5,7 +5,7 @@
         <h4 class="text-[19px] mb-2">
           <span>練習方法を見つける</span>
         </h4>
-        <p class="text-[35px]">練習に関するコンテンツをピックアップ
+        <p class="sm:text-[20px] md:text-[25px] xl:text-[35px]">練習に関するコンテンツをピックアップ</p>
       </div>
       <figure class="ml-20">
         <%= image_tag "training.jpg", class: "object-contain", size: "300x200" %>
@@ -14,10 +14,10 @@
         </figcaption>
       </figure>
     </div>
-    <div class="flex items-center mb-4 p-4 border rounded-b-lg">
+    <div class="flex flex-col items-center mb-4 p-4 border rounded-b-lg sm:flex-row">
       <%= image_tag @game.logo_url, class: "h-24 w-24 object-contain mr-4" %>
       <div>
-        <%= content_tag :div, @game.title, class: "font-bold mb-2" %>
+        <%= content_tag :div, @game.title, class: "text-center my-2 font-bold sm:text-left" %>
         <%= content_tag :div, @game.description, class: "text-sm" %>
       </div>
     </div>

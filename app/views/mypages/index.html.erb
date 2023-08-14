@@ -1,10 +1,19 @@
 <div class="w-5/6 mx-auto mt-4">
   <h1 class="text-3xl">マイページ</h1>
-  <div class="border-b w-4/6 text-2xl my-4">
+  <div class="hidden border-b w-4/6  my-4 md:block text-lg lg:text-2xl">
     <%= link_to '視聴済み', watch_path, remote: true, class: 'text-blue-500 hover:underline pr-3', id: 'watch-link' %>
-    <%= link_to '実践済み', complete_path, remote: true, class: 'text-blue-500 hover:underline pr-3', id: 'complete-link'  %>
-    <%= link_to 'メモ', mypage_memo_path, remote: true, class: 'text-blue-500 hover:underline pr-3', id: 'memo-link'  %>
-    <%= link_to 'プレイリスト', mypage_playlist_path, remote: true, class: 'text-blue-500 hover:underline', id: 'playlist-link'  %>
+    <%= link_to '実践済み', complete_path, remote: true, class: 'text-blue-500 hover:underline pr-3', id: 'complete-link' %>
+    <%= link_to 'メモ', mypage_memo_path, remote: true, class: 'text-blue-500 hover:underline pr-3', id: 'memo-link' %>
+    <%= link_to 'プレイリスト', mypage_playlist_path, remote: true, class: 'text-blue-500 hover:underline', id: 'playlist-link' %>
+  </div>
+  <div class="dropdown dropdown-bottom md:hidden">
+    <label tabindex="0" class="btn m-1"><i class="fa-solid fa-bars text-3xl"></i></label>
+    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-slate-50 rounded-box w-52">
+      <li><%= link_to '視聴済み', watch_path, remote: true, class: 'text-blue-500 hover:underline pr-3', id: 'watch-link' %></li>
+      <li><%= link_to '実践済み', complete_path, remote: true, class: 'text-blue-500 hover:underline pr-3', id: 'complete-link' %></li>
+      <li><%= link_to 'メモ', mypage_memo_path, remote: true, class: 'text-blue-500 hover:underline pr-3', id: 'memo-link'  %></li>
+      <li><%= link_to 'プレイリスト', mypage_playlist_path, remote: true, class: 'text-blue-500 hover:underline', id: 'playlist-link'  %></li>
+    </ul>
   </div>
   <turbo-frame id="section">
     <%= render 'shared/mypage_watched' %>

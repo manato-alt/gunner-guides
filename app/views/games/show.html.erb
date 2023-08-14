@@ -2,12 +2,12 @@
   <div class="w-4/5 mx-auto my-9 rounded-lg shadow-lg">
     <div class="p-8 bg-[#a7c2f3] rounded-t-lg text-white">
       <h2 class="text-[19px] mb-2">目的別コース</h2>
-      <h3 class="text-[35px]">あなたのSTEPに合わせて選択しよう<br>始めたばかりの方は「1.設定を変更する」から始めましょう</h3>
+      <h3 class="lg:text-[25px] xl:text-[35px]">あなたのSTEPに合わせて選択しよう<br>始めたばかりの方は「1.設定を変更する」から始めましょう</h3>
     </div>
-    <div class="flex items-center mb-4 p-4 border rounded-b-lg">
-      <%= image_tag @game.logo_url, class: "h-24 w-24 object-contain mr-4" %>
+    <div class="flex flex-col items-center mb-4 p-4 border rounded-b-lg sm:flex-row">
+      <%= image_tag @game.logo_url, class: "h-24 w-24 object-contain sm:mr-2" %>
       <div>
-        <%= content_tag :div, @game.title, class: "font-bold mb-2" %>
+        <%= content_tag :div, @game.title, class: "text-center my-2 font-bold sm:text-left" %>
         <%= content_tag :div, @game.description, class: "text-sm" %>
       </div>
     </div>
@@ -15,16 +15,16 @@
   <div class="w-4/5 mx-auto pb-4">
     <div class="mb-4">
       <%= link_to(setting_game_path(@game.title)) do %>
-        <div class="flex items-center border rounded-lg p-10 h-72 hover:scale-105 transition duration-300 shadow-md">
-          <%= image_tag "setting.jpg", class: "object-contain mr-7", size: "250x200" %>
-          <div>
-            <h4 class="text-3xl mb-2">
-              <span class="text-amber-500">1.</span>
-              <span>設定を変更する</span>
-            </h4>
-            <p class="text-neutral-500">「グラフィック設定」や「ボタン配置設置」を始めとして、初期設定をしっかりやるのとデフォルトで適当にやるのではゲームの上達速度が全く違ってきます。時間経過と共に変更する敷居が高くなるので最初にやることをお勧めします</p>
-          </div>
+      <div class="flex flex-col h-full md:flex-row items-center border rounded-lg p-4 hover:scale-105 transition duration-300 shadow-md">
+        <%= image_tag "setting.jpg", class: "object-contain mb-4 sm:mb-0 sm:mr-7", size: "250x200" %>
+        <div>
+          <h4 class="mb-2 text-lg sm:text-xl md:text-2xl lg:text-3xl">
+            <span class="text-amber-500">1.</span>
+            <span>設定を変更する</span>
+          </h4>
+          <p class="text-neutral-500">「グラフィック設定」や「ボタン配置設置」を始めとして、初期設定をしっかりやるのとデフォルトで適当にやるのではゲームの上達速度が全く違ってきます。時間経過と共に変更する敷居が高くなるので最初にやることをお勧めします</p>
         </div>
+      </div>
       <% end %>
       <div class="flex justify-end">
         <a href="https://jp.freepik.com/free-vector/custom-style-script-website-optimization-coding-software-development-female-programmer-cartoon-character-working-adding-javascript-css-code_11669143.htm#from_view=detail_author">著作者：vectorjuice</a>／出典：Freepik
@@ -33,10 +33,10 @@
 
     <div class="mb-4">
       <%= link_to(training_game_path(@game.title)) do %>
-        <div class="flex items-center border rounded-lg p-10 h-72 hover:scale-105 transition duration-300 shadow-md">
+        <div class="flex flex-col h-full md:flex-row items-center border rounded-lg p-4 hover:scale-105 transition duration-300 shadow-md">
           <%= image_tag "training.jpg", class: "object-contain mr-7", size: "250x200" %>
           <div>
-            <h4 class="text-3xl mb-2">
+            <h4 class="mb-2 text-lg sm:text-xl md:text-2xl lg:text-3xl">
               <span class="text-amber-500">2.</span>
               <span>練習方法を見つける</span>
             </h4>
@@ -51,10 +51,10 @@
 
 
     <%= link_to(information_game_path(@game.title)) do %>
-      <div class="bg-white flex items-center border rounded-lg p-10 h-72 hover:scale-105 transition duration-300 shadow-md">
+      <div class="flex flex-col h-full md:flex-row items-center border rounded-lg p-4 hover:scale-105 transition duration-300 shadow-md">
         <%= image_tag "information.jpg", class: "object-contain mr-7", size: "250x200" %>
         <div>
-          <h4 class="text-3xl mb-2">
+          <h4 class="mb-2 text-lg sm:text-xl md:text-2xl lg:text-3xl">
             <span class="text-amber-500">3.</span>
             <span>知識をつける</span>
           </h4>

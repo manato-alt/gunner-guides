@@ -4,9 +4,9 @@
       <p class="mb-5">ゲーム内で実践後、下記の完了ボタンを押してください</p>
       <% if current_user %>
         <% if @uservideo.watched_status == 1 %>
-          <%= button_to '完了', uservideo_path(@uservideo), method: :put, remote: true, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold text-3xl py-4 px-10 rounded-full", data: { turbo_frame: "uservideo_frame" } %>
+          <%= button_to '完了', uservideo_path(@uservideo), method: :put, remote: true, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded-full sm:text-2xl md:text-3xl", data: { turbo_frame: "uservideo_frame" } %>
         <% elsif @uservideo.watched_status == 2 %>
-          <%= button_to '完了済み', uservideo_path(@uservideo), method: :put, remote: true, class: "bg-green-500 hover:bg-green-700 text-white font-bold text-3xl py-4 px-10 rounded-full", data: { turbo_frame: "uservideo_frame" } %>
+          <%= button_to '完了済み', uservideo_path(@uservideo), method: :put, remote: true, class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-5 rounded-full sm:text-2xl md:text-3xl", data: { turbo_frame: "uservideo_frame" } %>
         <% end %>
       <% end %>
     </div>
