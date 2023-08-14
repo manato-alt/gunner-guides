@@ -1,4 +1,4 @@
-<div class="w-3/6 mx-auto mb-8 text-3xl">
+<div class="w-3/6 mx-auto my-4 sm:text-2xl">
   <div class="text-center my-3">
     <h1 class="text-3xl">動画詳細</h1>
   </div>
@@ -25,7 +25,7 @@
       <p>動画埋め込みコード</p>
     </div>
     <div class="pt-3">
-      <%= content_tag :div, @video.embed_code %>
+      <%= content_tag :div, @video.embed_code, class: "text-sm px-1" %>
     </div>
     <div class="border-y-2 mt-7">
       <p>動画情報作成日時</p>

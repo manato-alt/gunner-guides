@@ -7,7 +7,14 @@
       <%= link_to 'ログアウト', logout_path, class: "px-6 py-2 bg-purple-400 text-white font-bold rounded-lg hover:bg-purple-600 transiton-all duration-300", data: { turbo_method: :delete } %>
     </div>
     <div class="md:hidden">
-      <i class="fa-solid fa-bars text-3xl"></i>
+      <div class="dropdown dropdown-bottom dropdown-end">
+        <label tabindex="0" class="btn m-1"><i class="fa-solid fa-bars text-3xl"></i></label>
+        <ul tabindex="0" class="dropdown-content z-[50] menu p-2 shadow bg-slate-700 rounded-box w-60">
+          <li><%= link_to 'ゲーム一覧', games_path, class: "hover:text-purple-500 transiton-all duration-300" %></li>
+          <li><%= link_to 'マイページ', mypages_path, class: "hover:text-purple-500 transiton-all duration-300" %></li>
+          <li><%= link_to 'ログアウト', logout_path, class: "mt-1 px-6 py-2 bg-purple-400 text-white font-bold rounded-lg hover:bg-purple-600 transiton-all duration-300", data: { turbo_method: :delete } %></li>
+        </ul>
+      </div>
     </div>
   </div>
 </header>

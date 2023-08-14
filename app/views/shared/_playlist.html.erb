@@ -3,9 +3,9 @@
   <div class="text-center">
     <p>下記のボタンを押すことでプレイリストに登録できます</p>
     <p class="mb-5">※プレイリストの確認・作成はマイページで可能</p>
-    <button id="playlist-add-button" class="bg-green-500 hover:bg-green-700 text-white font-bold text-3xl py-4 px-10 rounded-full">プレイリストに登録</button>
+    <button id="playlist-add-button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-5 rounded-full sm:text-2xl md:text-3xl">プレイリストに登録</button>
     <div id="playlist-popup" class="invisible fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div class="bg-white p-4 rounded shadow-lg relative w-1/3">
+      <div class="bg-white p-4 rounded shadow-lg relative w-3/5 lg:w-1/3">
         <%= render 'playlists/playlist_popup' %>
       </div>
     </div>

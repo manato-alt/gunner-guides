@@ -13,7 +13,7 @@
       <div class="flex flex-col items-center w-6/12 mx-auto">
         <%= form.text_area :content, value: @memo.content, class: 'w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500' %>
         <div class="w-full flex justify-end">
-          <%= form.submit 'メモ', class: 'mt-2 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600 cursor-pointer' %>
+          <%= form.submit 'メモ', class: 'mt-1 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600 cursor-pointer' %>
         </div>
       </div>
       <%= form.hidden_field :user_id, value: @uservideo.user_id %>
@@ -21,11 +21,13 @@
     </div>
   <% end %>
   <div>
-    <div class="flex flex-row items-center w-6/12 mx-auto">
+    <div class="flex flex-row items-center w-6/12 mx-auto mt-4 md:mt-0">
       <div>
         <%= form_tag memo_section_path(@uservideo), method: :get, class: "" do %>
           <%= select_tag :sort, options_for_select({ "更新が新しい順" => "newest", "更新が古い順" => "oldest" }, session[:selected_sort]), prompt: '並び替え' %>
-          <%= submit_tag 'フィルタ', class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md cursor-pointer" %>
+          <div class="flex justify-end mt-1 sm:inline-block">
+            <%= submit_tag 'フィルタ', class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md cursor-pointer" %>
+          </div>
         <% end %>
       </div>
     </div>

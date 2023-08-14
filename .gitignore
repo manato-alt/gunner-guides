@@ -36,3 +36,4 @@ node_modules/
 Procfile.dev
 /.env
 /games.txt
+/node_modules
