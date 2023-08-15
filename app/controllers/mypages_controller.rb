@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controller for handling user profile pages and related actions.
 class MypagesController < ApplicationController
   before_action :require_login
   before_action :check_direct_access, only: %i[watch complete memo]
@@ -9,24 +12,24 @@ class MypagesController < ApplicationController
   def watch
     videos = Video.where(id: Uservideo.where(user_id: current_user.id, watched_status: 1).pluck(:video_id))
     @videos = videos.page(params[:page]).per(12)
-    
+
     if params[:game_id].present?
       @videos = @videos.where(game_id: params[:game_id])
       session[:selected_game_id] = params[:game_id]
     else
-      session[:selected_game_id] = nil  # セッションをクリア
+      session[:selected_game_id] = nil # セッションをクリア
     end
-  
+
     if params[:category_id].present?
       @videos = @videos.where(category_id: params[:category_id])
-      session[:selected_category_id] = params[:category_id]  # 選択されたcategory_idをセッションに保存
+      session[:selected_category_id] = params[:category_id] # 選択されたcategory_idをセッションに保存
     else
-      session[:selected_category_id] = nil  # セッションをクリア
+      session[:selected_category_id] = nil # セッションをクリア
     end
 
     render turbo_stream: turbo_stream.update(
       'section',
-      partial: 'shared/mypage_watched',
+      partial: 'shared/mypage_watched'
     )
   end
 
@@ -38,19 +41,19 @@ class MypagesController < ApplicationController
       @videos = @videos.where(game_id: params[:game_id])
       session[:selected_game_id] = params[:game_id]
     else
-      session[:selected_game_id] = nil  # セッションをクリア
+      session[:selected_game_id] = nil # セッションをクリア
     end
-  
+
     if params[:category_id].present?
       @videos = @videos.where(category_id: params[:category_id])
-      session[:selected_category_id] = params[:category_id]  # 選択されたcategory_idをセッションに保存
+      session[:selected_category_id] = params[:category_id] # 選択されたcategory_idをセッションに保存
     else
-      session[:selected_category_id] = nil  # セッションをクリア
-    end  
+      session[:selected_category_id] = nil # セッションをクリア
+    end
 
     render turbo_stream: turbo_stream.update(
       'section',
-      partial: 'shared/mypage_completed',
+      partial: 'shared/mypage_completed'
     )
   end
 
@@ -64,9 +67,9 @@ class MypagesController < ApplicationController
     else
       session[:game_id] = nil
     end
-  
-    if params[:order].present? && ["newest", "oldest"].include?(params[:order])
-      @memos = @memos.order(updated_at: params[:order] == "newest" ? :desc : :asc)
+
+    if params[:order].present? && %w[newest oldest].include?(params[:order])
+      @memos = @memos.order(updated_at: params[:order] == 'newest' ? :desc : :asc)
       session[:selected_sort] = params[:order]
     else
       session[:selected_sort] = nil
@@ -76,7 +79,7 @@ class MypagesController < ApplicationController
 
     render turbo_stream: turbo_stream.update(
       'section',
-      partial: 'shared/mypage_memo',
+      partial: 'shared/mypage_memo'
     )
   end
 
@@ -84,7 +87,7 @@ class MypagesController < ApplicationController
     @playlists = current_user.playlists
     render turbo_stream: turbo_stream.update(
       'section',
-      partial: 'playlists/index',
+      partial: 'playlists/index'
     )
   end
 end

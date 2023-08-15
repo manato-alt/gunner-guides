@@ -1,16 +1,19 @@
+# frozen_string_literal: true
+
+# Controller for managing games in the application.
 class GamesController < ApplicationController
   def index
     @games = Game.page(params[:page]).per(12)
-    
-    if params[:title].present?
-      @games = @games.where("title LIKE ?", "%#{params[:title]}%")
-    end
+
+    return unless params[:title].present?
+
+    @games = @games.where('title LIKE ?', "%#{params[:title]}%")
   end
 
   def autocomplete
     if params[:q].present?
       query = "%#{params[:q]}%"
-      @search_results = Game.where("title LIKE ?", query).pluck(:title)
+      @search_results = Game.where('title LIKE ?', query).pluck(:title)
     else
       @search_results = []
     end

@@ -1,17 +1,17 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails"
+require 'rails'
 # Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "active_storage/engine"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_mailbox/engine"
-require "action_text/engine"
-require "action_view/railtie"
-require "action_cable/engine"
+require 'active_model/railtie'
+require 'active_job/railtie'
+require 'active_record/railtie'
+require 'active_storage/engine'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'action_mailbox/engine'
+require 'action_text/engine'
+require 'action_view/railtie'
+require 'action_cable/engine'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -34,9 +34,9 @@ module Portfolio
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.i18n.default_locale = :ja
-    config.time_zone = "Tokyo" 
+    config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.yml').to_s]
-    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+    config.action_view.field_error_proc = proc { |html_tag, _instance| html_tag }
   end
 end

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This controller manages user-related actions and information.s
 class UsersController < ApplicationController
   before_action :block_login_page_access
   def new
@@ -19,4 +22,3 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end
-
