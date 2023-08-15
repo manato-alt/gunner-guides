@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Userクラスは、アプリケーション内でユーザー情報を管理します。
 class User < ApplicationRecord
   authenticates_with_sorcery!
 

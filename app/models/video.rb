@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Videoクラスは、アプリケーション内で動画情報を管理します。
 class Video < ApplicationRecord
   belongs_to :category
   belongs_to :game

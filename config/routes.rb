@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   get 'password_resets/create'
   get 'password_resets/edit'
   get 'password_resets/update'
@@ -42,6 +42,6 @@ Rails.application.routes.draw do
       put 'add_video/:video_id', to: 'playlists#add_video', as: 'add_video'
     end
   end
-  get '/autocomplete' , to: 'games#autocomplete'
+  get '/autocomplete', to: 'games#autocomplete'
   resources :password_resets, only: %i[create edit update new]
 end
