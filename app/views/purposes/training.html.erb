@@ -1,4 +1,4 @@
-<div>
+<div class="min-h-screen">
   <div class="w-4/5 mx-auto my-9 rounded-lg shadow-lg">
     <div class="p-8 bg-[#a7c2f3] rounded-t-lg text-white flex items-center">
       <div>
@@ -26,20 +26,22 @@
     <% @videos.each do |video| %>
       <div class="rounded-lg shadow-md p-2 border hover:scale-105 transition duration-300">
         <%= link_to  purpose_path(@game.title, video) do %>
-          <div class="flex justify-between items-center">
-            <%= image_tag video.thumbnail_url, class: "h-auto w-7/12 rounded-t-lg ml-4" %>
+          <div>
+            <div class="video-container">
+              <%= video.embed_code.html_safe %>
+            </div>
             <% if current_user %>
-              <div class="flex flex-col mr-7">
-                <div class="mb-2">
+              <div class="flex justify-end">
+                <div class="mr-4">
                   <% uservideo = Uservideo.find_by(user_id: current_user.id, video_id: video.id) %>
                   <% watched_checked = uservideo&.watched_status == 1 ? true : false %>
                   <%= check_box_tag "watched_status[#{video.id}]", 1, [1, 2].include?(uservideo&.watched_status), disabled: true %>
-                  <%= label_tag "watched_status[#{video.id}]", "視聴済み" %>
+                  <%= label_tag "watched_status[#{video.id}]", "視聴" %>
                 </div>
                 <div>
                   <% practiced_checked = uservideo&.watched_status == 2 ? true : false %>
                   <%= check_box_tag "watched_status[#{video.id}]", 2, practiced_checked, disabled: true %>
-                  <%= label_tag "watched_status[#{video.id}]", "完了済み" %>
+                  <%= label_tag "watched_status[#{video.id}]", "完了" %>
                 </div>
               </div>  
             <% end %>
