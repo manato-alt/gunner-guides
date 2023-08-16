@@ -3,7 +3,7 @@ class CreateVideos < ActiveRecord::Migration[7.0]
     create_table :videos do |t|
       t.string :title
       t.string :thumbnail_url
-      t.string :embed_code
+      t.text :embed_code
       t.references :game, null: false, foreign_key: true
 
       t.timestamps
