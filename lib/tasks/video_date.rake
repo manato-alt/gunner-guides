@@ -4,9 +4,14 @@ namespace :video_date do
   task save_videos: :environment do
     category = Category.find_by(name: 'setting')
     keywords = category.keywords
-    games = File.exist?('games.txt') ? File.readlines('games.txt').map(&:chomp) : []
-    games = games.present? ? games : Game.all.pluck(:title)
-    game_name = games.first
+    game_name = GamesState.exists? ? GamesState.pluck(:title).first : []
+    if game_name.empty?
+      titles = Game.all.pluck(:title)
+      titles.each do |title|
+        GamesState.create(title: title)
+      end
+      game_name = GamesState.pluck(:title).first
+    end
     game = Game.where(title: game_name).take
     client = Google::Apis::YoutubeV3::YouTubeService.new
     client.key = ENV['youtube_apy_key']
@@ -94,7 +99,6 @@ namespace :video_date do
     end
 
     #---------------------------------------------------------------------------------
-    games.shift
-    File.open('games.txt', 'w') { |file| file.write(games.join("\n")) }
+    GamesState.where(title: game_name).delete_all
   end
 end
