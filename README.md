@@ -10,7 +10,7 @@ https://gunner-guides-f481e15f3a3d.herokuapp.com/
 | ---- | ---- | ---- | ---- |
 | Ruby(3.2.2)<br>Ruby on Rails(7.0.4.3) | JavaScript<br>TailwindCSS<br>daisyUI | MySQL<br>Heroku | Twitch API<br>YouTube Data API v3<br>Giantbomb API |
 ## ER図
-<img width="860" alt="GunnerGuides_ER図" src="https://github.com/manato-alt/portfolio/assets/111627394/9ce3cca0-c3ed-4ce7-abfe-5d80ca445e88">
+<img width="682" alt="GunnerGuides_ER図" src="https://github.com/manato-alt/gunner-guides/assets/111627394/a53fb962-c8af-49fc-908d-748568bc970a">
 
 ## 画面遷移図
 URLは[こちら](https://www.figma.com/file/EAI0phFo4p06eqZp6nvlH3/GunnerGuides?type=design&node-id=0%3A1&mode=design&t=0dAxVfpDCN9OWbsS-1)
